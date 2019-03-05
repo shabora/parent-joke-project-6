@@ -1,28 +1,60 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
+import Header from './components/Header.js';
+import Nav from './components/Nav.js';
+import firebase from './components/firebase.js';
+import DisplayDailyJoke from './components/DisplayDailyJoke.js';
+import GetJokeButton from './components/GetJokeButton'
+
+
+
+
 
 class App extends Component {
-  render() {
+  constructor () {
+    super()
+
+    this.state = {
+      jokesList: null,
+      jokeButtonShow: true,
+    }
+  }
+
+
+  handleDailyJoke = () => {
+    axios({
+      url: 'https://icanhazdadjoke.com/',
+      method: 'GET',
+      headers: {
+        Accept: 'application/json'
+      }
+    }).then(results => {
+      const returnedJoke = results.data.joke
+      console.log(returnedJoke)
+      this.setState({
+        jokesList: returnedJoke,
+        jokeButtonShow: false,
+      })
+    })
+  }
+
+
+  render () {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+      <div className='App'>
+        <header>
+          <Header textLanding='Welcome to Shabora' />
+          <nav>
+            <Nav />
+          </nav>
         </header>
+        {/* Daily Joke Page */}
+        {(this.state.jokeButtonShow === true) && <GetJokeButton handleDailyJoke={this.handleDailyJoke} />}
+        {(this.state.jokeButtonShow === false) && <DisplayDailyJoke dailyJoke={this.state.jokesList} handleDailyJoke={this.handleDailyJoke} />}
+        
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
