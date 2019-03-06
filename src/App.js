@@ -52,30 +52,16 @@ class App extends Component {
     }).then(results => {
       console.log(results.data.results)
       this.setState({
+        // jokesFirebase.value = 0,
+        // jokesFirebase.index = 0,
+        // jokesFirebase.likeCount = 0,
+        // jokesFirebase.dislikeCount = 0,
+        // jokesFirebase.dontGetCount = 0
         jokesFirebase: results.data.results,
-        value: 0,
-        index: 0,
-        likeCount: 0,
-        dislikeCount: 0,
-        dontGetCount: 0
       })
     })
 
-    /* inital function to populate firebase */
-    pushToFirebase = () => {
-      const dbRef = firebase.database().ref()
-      dbRef.push({
-        jokesFirebase: results.data.results,
-        value: 0,
-        index: 0,
-        likeCount: 0,
-        dislikeCount: 0,
-        dontGetCount: 0
-      })
-      this.setState({
-        jokesFirebase: []
-      })
-    }
+    
 
     // setting state with our firebase jokes
     const dbRef = firebase.database().ref()
