@@ -9,9 +9,9 @@ import GetJokeButton from './components/GetJokeButton'
 const PrintJokes = props => {
   return (
     <React.Fragment>
-      {props.print.map(jokeItem => {
+      {props.print.map((jokeItem, index) => {
         return (
-          <div key={jokeItem.id} id={jokeItem.id}>
+          <div key={jokeItem.id} index={index} id={jokeItem.id}>
             <p>{jokeItem.joke}</p>
             <button onClick={props.handleLikeVote}>Like</button>
             <button>Don't Get It</button>
@@ -33,17 +33,9 @@ class App extends Component {
       jokeButtonShow: true,
       jokesFirebase: [],
       jokesFirebaseUse: [],
-      value:0
     }
   }
-  /* inital function to populate firebase */
-  pushToFirebase = () => {
-    const dbRef = firebase.database().ref()
-    dbRef.push(this.state.jokesFirebase)
-    this.setState({
-      jokesFirebase: []
-    })
-  }
+  
   /* inital function to populate firebase */
   /* Delete before submitting */
   componentDidMount () {
@@ -60,9 +52,30 @@ class App extends Component {
     }).then(results => {
       console.log(results.data.results)
       this.setState({
-        jokesFirebase: results.data.results
+        jokesFirebase: results.data.results,
+        value: 0,
+        index: 0,
+        likeCount: 0,
+        dislikeCount: 0,
+        dontGetCount: 0
       })
     })
+
+    /* inital function to populate firebase */
+    pushToFirebase = () => {
+      const dbRef = firebase.database().ref()
+      dbRef.push({
+        jokesFirebase: results.data.results,
+        value: 0,
+        index: 0,
+        likeCount: 0,
+        dislikeCount: 0,
+        dontGetCount: 0
+      })
+      this.setState({
+        jokesFirebase: []
+      })
+    }
 
     // setting state with our firebase jokes
     const dbRef = firebase.database().ref()
@@ -121,10 +134,13 @@ class App extends Component {
           <nav>
             <Nav />
           </nav>
+          
         </header>
         {/* Daily Joke Page */}
         {this.state.jokeButtonShow === true && (
-          <GetJokeButton handleDailyJoke={this.handleDailyJoke} />
+          <GetJokeButton handleDailyJoke={this.handleDailyJoke} 
+          pushToFirebase={this.pushToFirebase}
+          />
         )}
         {this.state.jokeButtonShow === false && (
           <DisplayDailyJoke
