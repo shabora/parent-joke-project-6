@@ -13,9 +13,9 @@ const PrintJokes = props => {
         return (
           <div key={jokeItem.id} index={index} id={jokeItem.id}>
             <p>{jokeItem.joke}</p>
-            <button onClick={props.handleLikeVote}>Like</button>
+            <button onClick={props.handleLikeVote(jokeItem.id)}>Like</button>
             <button>Don't Get It</button>
-            <button>Dislike</button>
+            <button onClick={props.handleLikeVote}>Dislike</button>
           </div>
         )
       })}
@@ -24,9 +24,8 @@ const PrintJokes = props => {
 }
 
 
-
 class App extends Component {
-  constructor () {
+  constructor() {
     super()
     this.state = {
       jokesList: null,
@@ -35,19 +34,20 @@ class App extends Component {
       jokesFirebaseUse: [],
     }
   }
-  
+
+  // DELETE BEFORE SUBMITTING
   /* inital function to populate firebase */
-  pushToFirebase = () => {
-    const dbRef = firebase.database().ref()
-    dbRef.push(this.state.jokesFirebase)
-    this.setState({
-      jokesFirebase: []
-    })
-  }
+  // pushToFirebase = () => {
+  //   const dbRef = firebase.database().ref()
+  //   dbRef.push(this.state.jokesFirebase)
+  //   this.setState({
+  //     jokesFirebase: [],
+  //   })
+  // }
 
   /* inital function to populate firebase */
   /* Delete before submitting */
-  componentDidMount () {
+  componentDidMount() {
     axios({
       url: 'https://icanhazdadjoke.com/search',
       method: 'GET',
@@ -75,22 +75,10 @@ class App extends Component {
       })
       console.log(returnedArray);
 
-      // returnedArray.forEach((index) =>{
-      //   // value: 0,
-      //   // likeCount: 0,
-      //   // dislikeCount: 0,
-      //   // neutralCount: 0
-      // })
-      // for each item add index -- parameter, value, like count, dislike count, neutral count
-      
-
       this.setState({
-
-        jokesFirebase: results.data.results,
+        jokesFirebase: returnedArray
       })
     })
-
-    
 
     // setting state with our firebase jokes
     const dbRef = firebase.database().ref()
@@ -99,7 +87,6 @@ class App extends Component {
       const newList = []
       console.log(newList)
 
-      /* console.log(data) */
 
       for (let key in data) {
         const newItem = data[key]
@@ -107,8 +94,11 @@ class App extends Component {
           newList.push({
             id: joke.id,
             joke: joke.joke,
-            
-    
+            value: joke.value,
+            index: joke.index,
+            likeCount: joke.likeCount,
+            dislikeCount: joke.dislikeCount,
+            neutralCount: joke.neutralCount
           })
           this.setState({
             jokesFirebaseUse: newList
@@ -136,11 +126,16 @@ class App extends Component {
   }
 
   // event handling for joke voting
-  handleLikeVote = () => {
-    console.log('hello')
-  }
+  // after clicking like, update the like count,value and index of that joke on firebase, update the value, and the index.
+  // clear firebaseuse array and then pushing the latest data from firebase.
+  handleLikeVote = (id) => {
+    const dbRef = firebase.database().ref(id)
+    console.log(dbRef)
 
-  render () {
+    }
+
+
+  render() {
     return (
       <div className='App'>
         <header>
@@ -149,12 +144,12 @@ class App extends Component {
           <nav>
             <Nav />
           </nav>
-          
+
         </header>
         {/* Daily Joke Page */}
         {this.state.jokeButtonShow === true && (
-          <GetJokeButton handleDailyJoke={this.handleDailyJoke} 
-          pushToFirebase={this.pushToFirebase}
+          <GetJokeButton handleDailyJoke={this.handleDailyJoke}
+            pushToFirebase={this.pushToFirebase}
           />
         )}
         {this.state.jokeButtonShow === false && (
