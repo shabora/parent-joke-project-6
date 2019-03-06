@@ -37,6 +37,15 @@ class App extends Component {
   }
   
   /* inital function to populate firebase */
+  pushToFirebase = () => {
+    const dbRef = firebase.database().ref()
+    dbRef.push(this.state.jokesFirebase)
+    this.setState({
+      jokesFirebase: []
+    })
+  }
+
+  /* inital function to populate firebase */
   /* Delete before submitting */
   componentDidMount () {
     axios({
@@ -50,13 +59,33 @@ class App extends Component {
         page: 1
       }
     }).then(results => {
-      console.log(results.data.results)
+      // console.log(results.data.results)
+      const returnedArray = results.data.results;
+
+      // returnedArray.forEach((joke) => {
+      //   console.log(joke);
+      // });
+
+      returnedArray.forEach((joke) => {
+        joke.index = 0
+        joke.value = 0
+        joke.likeCount = 0
+        joke.dislikeCount = 0
+        joke.neutralCount = 0
+      })
+      console.log(returnedArray);
+
+      // returnedArray.forEach((index) =>{
+      //   // value: 0,
+      //   // likeCount: 0,
+      //   // dislikeCount: 0,
+      //   // neutralCount: 0
+      // })
+      // for each item add index -- parameter, value, like count, dislike count, neutral count
+      
+
       this.setState({
-        // jokesFirebase.value = 0,
-        // jokesFirebase.index = 0,
-        // jokesFirebase.likeCount = 0,
-        // jokesFirebase.dislikeCount = 0,
-        // jokesFirebase.dontGetCount = 0
+
         jokesFirebase: results.data.results,
       })
     })
@@ -78,7 +107,7 @@ class App extends Component {
           newList.push({
             id: joke.id,
             joke: joke.joke,
-            value: 0,
+            
     
           })
           this.setState({
