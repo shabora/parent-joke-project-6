@@ -6,17 +6,34 @@ import firebase from './components/firebase.js'
 import DisplayDailyJoke from './components/DisplayDailyJoke.js'
 import GetJokeButton from './components/GetJokeButton'
 
+const PrintJokes = props => {
+  return (
+    <React.Fragment>
+      {props.print.map(jokeItem => {
+        return (
+          <div key={jokeItem.id} id={jokeItem.id}>
+            <p>{jokeItem.joke}</p>
+            <button onClick={props.handleLikeVote}>Like</button>
+            <button>Don't Get It</button>
+            <button>Dislike</button>
+          </div>
+        )
+      })}
+    </React.Fragment>
+  )
+}
+
 
 
 class App extends Component {
   constructor () {
     super()
-
     this.state = {
       jokesList: null,
       jokeButtonShow: true,
       jokesFirebase: [],
-      jokesFirebaseUse: []
+      jokesFirebaseUse: [],
+      value:0
     }
   }
   /* inital function to populate firebase */
@@ -47,23 +64,24 @@ class App extends Component {
       })
     })
 
-// setting state with our firebase jokes
+    // setting state with our firebase jokes
     const dbRef = firebase.database().ref()
     dbRef.on('value', response => {
       let data = response.val()
       const newList = []
-      console.log(newList);
-      
+      console.log(newList)
+
       /* console.log(data) */
 
       for (let key in data) {
-        const  newItem = data[key]
-        newItem.forEach(joke =>{
+        const newItem = data[key]
+        newItem.forEach(joke => {
           newList.push({
             id: joke.id,
             joke: joke.joke,
-            value: 0
-          }) 
+            value: 0,
+    
+          })
           this.setState({
             jokesFirebaseUse: newList
           })
@@ -72,8 +90,6 @@ class App extends Component {
     })
   }
 
-
-  
   handleDailyJoke = () => {
     axios({
       url: 'https://icanhazdadjoke.com/',
@@ -89,6 +105,11 @@ class App extends Component {
         jokeButtonShow: false
       })
     })
+  }
+
+  // event handling for joke voting
+  handleLikeVote = () => {
+    console.log('hello')
   }
 
   render () {
@@ -112,7 +133,7 @@ class App extends Component {
           />
         )}
         {/* display list of jokes */}
-        
+        <PrintJokes print={this.state.jokesFirebaseUse} handleLikeVote={this.handleLikeVote} />
       </div>
     )
   }
