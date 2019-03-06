@@ -13,17 +13,15 @@ const PrintJokes = props => {
         return (
           <div key={jokeItem.id} index={index} id={jokeItem.id}>
             <p>{jokeItem.joke}</p>
-            <button onClick={props.handleLikeVote(jokeItem.id)}>Like</button>
+            <button onClick={props.handleLikeVote}>Like</button>
             <button>Don't Get It</button>
-            <button onClick={props.handleLikeVote}>Dislike</button>
+            <button>Dislike</button>
           </div>
         )
       })}
     </React.Fragment>
   )
 }
-
-
 class App extends Component {
   constructor() {
     super()
@@ -35,16 +33,14 @@ class App extends Component {
     }
   }
 
-  // DELETE BEFORE SUBMITTING
   /* inital function to populate firebase */
-  // pushToFirebase = () => {
-  //   const dbRef = firebase.database().ref()
-  //   dbRef.push(this.state.jokesFirebase)
-  //   this.setState({
-  //     jokesFirebase: [],
-  //   })
-  // }
-
+  pushToFirebase = () => {
+    const dbRef = firebase.database().ref()
+    dbRef.push(this.state.jokesFirebase)
+    this.setState({
+      jokesFirebase: []
+    })
+  }
   /* inital function to populate firebase */
   /* Delete before submitting */
   componentDidMount() {
@@ -75,10 +71,22 @@ class App extends Component {
       })
       console.log(returnedArray);
 
+      // returnedArray.forEach((index) =>{
+      //   // value: 0,
+      //   // likeCount: 0,
+      //   // dislikeCount: 0,
+      //   // neutralCount: 0
+      // })
+      // for each item add index -- parameter, value, like count, dislike count, neutral count
+
+
       this.setState({
-        jokesFirebase: returnedArray
+
+        jokesFirebase: results.data.results,
       })
     })
+
+
 
     // setting state with our firebase jokes
     const dbRef = firebase.database().ref()
@@ -87,6 +95,7 @@ class App extends Component {
       const newList = []
       console.log(newList)
 
+      /* console.log(data) */
 
       for (let key in data) {
         const newItem = data[key]
@@ -94,11 +103,13 @@ class App extends Component {
           newList.push({
             id: joke.id,
             joke: joke.joke,
-            value: joke.value,
             index: joke.index,
+            value: joke.value, 
             likeCount: joke.likeCount,
             dislikeCount: joke.dislikeCount,
             neutralCount: joke.neutralCount
+
+
           })
           this.setState({
             jokesFirebaseUse: newList
@@ -126,14 +137,9 @@ class App extends Component {
   }
 
   // event handling for joke voting
-  // after clicking like, update the like count,value and index of that joke on firebase, update the value, and the index.
-  // clear firebaseuse array and then pushing the latest data from firebase.
-  handleLikeVote = (id) => {
-    const dbRef = firebase.database().ref(id)
-    console.log(dbRef)
-
-    }
-
+  handleLikeVote = () => {
+    console.log('hello')
+  }
 
   render() {
     return (
