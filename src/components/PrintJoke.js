@@ -1,19 +1,24 @@
-import React from 'react';
+import React from 'react'
 
-const PrintJoke = props => {
-    return (
+const PrintJoke = (props) =>{
+    return(
         <React.Fragment>
-            {props.print.map((jokeItem, index) => {
-                return (
-                    <div key={jokeItem.id} index={index} id={jokeItem.id}>
-                        <p>{jokeItem.joke}</p>
-                        <button onClick={props.handleLikeVote}>Like</button>
-                        <button>Don't Get It</button>
-                        <button>Dislike</button>
-                    </div>
-                )
-            })}
-        </React.Fragment>
+    
+    { props.jokesFirebaseUse.map((joke, index) =>{
+        return(
+            <div key={joke.key} index={index} id={joke.key}>
+                <p>{joke.userJoke}</p>
+                <h2>{joke.userName}</h2>
+                <h2>{joke.userDepartment}</h2>
+                <button>Like</button>
+                <button>Dont Like</button>
+                <button>Do not get it?</button>
+
+
+            </div>
+        )
+    })}
+     </React.Fragment>
     )
 }
 

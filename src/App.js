@@ -6,37 +6,9 @@ import firebase from './components/firebase.js'
 import DisplayDailyJoke from './components/DisplayDailyJoke.js'
 import GetJokeButton from './components/GetJokeButton'
 import PrintJoke from './components/PrintJoke.js';
+import SubmitJoke from './components/SubmitJoke.js';
 
-const SubmitJoke = (props) => {
-  return(
-    // Form to submit your joke
-    <form action="submit" onSubmit={props.handleJokeSubmit}>
-      {/* Name */}
-      <label htmlFor="name" name="name">Please enter your name</label>
 
-      <input  type="text" id="name" name="userName" required placeholder="name"
-      onChange={props.handleChange}
-      value={props.userSubmittedJoke.userName}
-      />
-
-      {/* Department */}
-      <label htmlFor="department" name="department">Please enter your department</label>
-      <input type="text" id="department" name="userDepartment" required placeholder="Your department" 
-      onChange={props.handleChange}
-      value={props.userSubmittedJoke.userDepartment}  
-      />
-
-      {/* Joke */}
-      <label htmlFor="joke" name="joke">Give us your joke!</label>
-      <textarea name="userJoke" id="joke" cols="30" rows="10" required placeholder="Give us your joke!"
-      
-      onChange={props.handleChange}
-      value={props.userSubmittedJoke.userJoke}></textarea>
-
-      <button type="submit">Submit it!</button>
-    </form>
-  )
-}
 
 
 class App extends Component {
@@ -61,14 +33,33 @@ class App extends Component {
     }
   }
 
+  componentDidMount(){
+    const dbRef = firebase.database().ref()
+    dbRef.on('value', response => {
+      let data = response.val()
+      // console.log("This is data", data);
+      console.log(data)
+      const newList = []  
+      for(let key in data){
+        console.log(data[key])
+        newList.push(data[key])
+      }
+      console.log(newList);
+      this.setState({
+        jokesFirebaseUse:newList,
+      })
+    
+    })
+  }
+
   // Handle change to get text inputs from submit joke
   handleChange = (event) => {
     
     const newObject = Object.assign(this.state.userSubmittedJoke)
     newObject[event.target.name] = event.target.value
- 
+
   
-     this.setState({
+    this.setState({
       userSubmittedJoke:newObject
     }) 
   }
@@ -82,15 +73,12 @@ class App extends Component {
         userName: '',
         userDepartment: '',
         userJoke:'',
+        key:key
       }
     })
   }
 
-  /* inital function to populate firebase */
 
-  /* inital function to populate firebase */
-  /* Delete before submitting */
- 
 
   handleDailyJoke = () => {
     axios({
@@ -141,7 +129,7 @@ class App extends Component {
         userSubmittedJoke={this.state.userSubmittedJoke} />
 
         {/* {/* display list of jokes */}
-        <PrintJoke print={this.state.jokesFirebaseUse} handleLikeVote={this.handleLikeVote} />
+        <PrintJoke jokesFirebaseUse={this.state.jokesFirebaseUse} handleLikeVote={this.handleLikeVote} />
       </div>
     )
   }
