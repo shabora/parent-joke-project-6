@@ -42,6 +42,9 @@ class App extends Component {
       const newList = []  
       for(let key in data){
         console.log(data[key])
+        console.log(key);
+        data[key].key = key
+        console.log(data[key])
         newList.push(data[key])
       }
       console.log(newList);
@@ -73,7 +76,6 @@ class App extends Component {
         userName: '',
         userDepartment: '',
         userJoke:'',
-        key:key
       }
     })
   }
