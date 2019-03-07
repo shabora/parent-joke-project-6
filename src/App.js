@@ -33,6 +33,8 @@ class App extends Component {
     }
   }
 
+
+
   componentDidMount(){
     const dbRef = firebase.database().ref()
     dbRef.on('value', response => {
@@ -42,9 +44,8 @@ class App extends Component {
       const newList = []  
       for(let key in data){
         console.log(data[key])
-        console.log(key);
-        data[key].key = key
-        console.log(data[key])
+        data[key].key = key 
+    
         newList.push(data[key])
       }
       console.log(newList);
@@ -66,6 +67,9 @@ class App extends Component {
       userSubmittedJoke:newObject
     }) 
   }
+  handleLike = () =>{
+    console.log('hloo')
+  }
 
   handleJokeSubmit = (event) =>{
     event.preventDefault();
@@ -76,6 +80,7 @@ class App extends Component {
         userName: '',
         userDepartment: '',
         userJoke:'',
+      
       }
     })
   }
@@ -131,7 +136,7 @@ class App extends Component {
         userSubmittedJoke={this.state.userSubmittedJoke} />
 
         {/* {/* display list of jokes */}
-        <PrintJoke jokesFirebaseUse={this.state.jokesFirebaseUse} handleLikeVote={this.handleLikeVote} />
+        <PrintJoke handleLike={this.state.handleLike} jokesFirebaseUse={this.state.jokesFirebaseUse} handleLikeVote={this.handleLikeVote} />
       </div>
     )
   }
