@@ -10,22 +10,28 @@ import PrintJoke from './components/PrintJoke.js';
 const SubmitJoke = (props) => {
   return(
     // Form to submit your joke
-    <form action="submit">
+    <form action="submit" onSubmit={props.handleJokeSubmit}>
       {/* Name */}
       <label htmlFor="name" name="name">Please enter your name</label>
-      <input type="text" id="name" name="userName" required placeholder="name"
+
+      <input  type="text" id="name" name="userName" required placeholder="name"
+      onChange={props.handleChange}
+      value={props.userSubmittedJoke.userName}
       />
 
       {/* Department */}
       <label htmlFor="department" name="department">Please enter your department</label>
       <input type="text" id="department" name="userDepartment" required placeholder="Your department" 
+      onChange={props.handleChange}
+      value={props.userSubmittedJoke.userDepartment}  
       />
 
       {/* Joke */}
       <label htmlFor="joke" name="joke">Give us your joke!</label>
       <textarea name="userJoke" id="joke" cols="30" rows="10" required placeholder="Give us your joke!"
       
-      ></textarea>
+      onChange={props.handleChange}
+      value={props.userSubmittedJoke.userJoke}></textarea>
 
       <button type="submit">Submit it!</button>
     </form>
@@ -40,66 +46,51 @@ class App extends Component {
       jokesList: null,
       jokeButtonShow: true,
       jokesFirebaseUse: [],
-      userName: "",
-      userDepartment: "",
-      userJoke: "",
+      userSubmittedJoke: {
+        userName: "",
+        userDepartment: "",
+        userJoke: "",
+        userValue:0,
+        userIndex:0,
+        likeCount:0,
+        dislikeCount:0,
+        neutralCount:0,
+        key:'',
+      }
+      
     }
   }
 
   // Handle change to get text inputs from submit joke
   handleChange = (event) => {
+    
+    const newObject = Object.assign(this.state.userSubmittedJoke)
+    newObject[event.target.name] = event.target.value
+ 
+  
+     this.setState({
+      userSubmittedJoke:newObject
+    }) 
+  }
+
+  handleJokeSubmit = (event) =>{
     event.preventDefault();
-    const userName = event.target.userName.value;
-    const userDepartment = event.target.userDepartment.value;
-    const userJoke = event.target.userJoke.value;
-  }
-
-  /* inital function to populate firebase */
-  pushToFirebase = () => {
     const dbRef = firebase.database().ref()
-    dbRef.push(this.state.jokesFirebase)
+    dbRef.push(this.state.userSubmittedJoke)
     this.setState({
-      jokesFirebase: []
-    })
-  }
-  /* inital function to populate firebase */
-  /* Delete before submitting */
-  componentDidMount() {
-
-
-
-
-    // setting state with our firebase jokes
-    const dbRef = firebase.database().ref()
-    dbRef.on('value', response => {
-      let data = response.val()
-      console.log("This is data", data);
-      const newList = []
-      // console.log(newList)
-
-      /* console.log(data) */
-
-      for (let key in data) {
-        const newItem = data[key]
-        console.log("This is new item", newItem);
-        newItem.forEach(joke => {
-          newList.push({
-            id: joke.id,
-            joke: joke.joke,
-            index: joke.index,
-            value: joke.value, 
-            likeCount: joke.likeCount,
-            dislikeCount: joke.dislikeCount,
-            neutralCount: joke.neutralCount
-          })
-
-          this.setState({
-            jokesFirebaseUse: newList
-          })
-        })
+      userSubmittedJoke: {
+        userName: '',
+        userDepartment: '',
+        userJoke:'',
       }
     })
   }
+
+  /* inital function to populate firebase */
+
+  /* inital function to populate firebase */
+  /* Delete before submitting */
+ 
 
   handleDailyJoke = () => {
     axios({
@@ -118,13 +109,7 @@ class App extends Component {
     })
   }
 
-  // event handling for joke voting
-  handleLikeVote = (jokeId) => {
-    console.log(jokeId);
-
-    const dbRef = firebase.database().ref(jokeId);
-    dbRef.update({value: 2});
-  }
+  // event handling for joke votin
 
   render() {
     return (
@@ -150,7 +135,10 @@ class App extends Component {
           />
         )}
 
-        <SubmitJoke />
+        <SubmitJoke
+        handleChange={this.handleChange}
+        handleJokeSubmit={this.handleJokeSubmit}
+        userSubmittedJoke={this.state.userSubmittedJoke} />
 
         {/* {/* display list of jokes */}
         <PrintJoke print={this.state.jokesFirebaseUse} handleLikeVote={this.handleLikeVote} />
