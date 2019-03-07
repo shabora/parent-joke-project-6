@@ -67,8 +67,12 @@ class App extends Component {
       userSubmittedJoke:newObject
     }) 
   }
-  handleLike = () =>{
-    console.log('hloo')
+  handleLike = (id) =>{
+    const dbRef = firebase.database().ref(id);
+    dbRef.update({
+      userValue: 1
+    })
+
   }
 
   handleJokeSubmit = (event) =>{
@@ -136,7 +140,7 @@ class App extends Component {
         userSubmittedJoke={this.state.userSubmittedJoke} />
 
         {/* {/* display list of jokes */}
-        <PrintJoke handleLike={this.state.handleLike} jokesFirebaseUse={this.state.jokesFirebaseUse} handleLikeVote={this.handleLikeVote} />
+        <PrintJoke handleLike={this.handleLike} jokesFirebaseUse={this.state.jokesFirebaseUse} handleLikeVote={this.handleLikeVote} />
       </div>
     )
   }
