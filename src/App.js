@@ -5,32 +5,53 @@ import Nav from './components/Nav.js'
 import firebase from './components/firebase.js'
 import DisplayDailyJoke from './components/DisplayDailyJoke.js'
 import GetJokeButton from './components/GetJokeButton'
+import PrintJoke from './components/PrintJoke.js';
 
-const PrintJokes = props => {
-  return (
-    <React.Fragment>
-      {props.print.map((jokeItem, index) => {
-        return (
-          <div key={jokeItem.id} index={index} id={jokeItem.id}>
-            <p>{jokeItem.joke}</p>
-            <button onClick={props.handleLikeVote}>Like</button>
-            <button>Don't Get It</button>
-            <button>Dislike</button>
-          </div>
-        )
-      })}
-    </React.Fragment>
+const SubmitJoke = (props) => {
+  return(
+    // Form to submit your joke
+    <form action="submit">
+      {/* Name */}
+      <label htmlFor="name" name="name">Please enter your name</label>
+      <input type="text" id="name" name="userName" required placeholder="name"
+      />
+
+      {/* Department */}
+      <label htmlFor="department" name="department">Please enter your department</label>
+      <input type="text" id="department" name="userDepartment" required placeholder="Your department" 
+      />
+
+      {/* Joke */}
+      <label htmlFor="joke" name="joke">Give us your joke!</label>
+      <textarea name="userJoke" id="joke" cols="30" rows="10" required placeholder="Give us your joke!"
+      
+      ></textarea>
+
+      <button type="submit">Submit it!</button>
+    </form>
   )
 }
+
+
 class App extends Component {
   constructor() {
     super()
     this.state = {
       jokesList: null,
       jokeButtonShow: true,
-      jokesFirebase: [],
       jokesFirebaseUse: [],
+      userName: "",
+      userDepartment: "",
+      userJoke: "",
     }
+  }
+
+  // Handle change to get text inputs from submit joke
+  handleChange = (event) => {
+    event.preventDefault();
+    const userName = event.target.userName.value;
+    const userDepartment = event.target.userDepartment.value;
+    const userJoke = event.target.userJoke.value;
   }
 
   /* inital function to populate firebase */
@@ -44,47 +65,7 @@ class App extends Component {
   /* inital function to populate firebase */
   /* Delete before submitting */
   componentDidMount() {
-    axios({
-      url: 'https://icanhazdadjoke.com/search',
-      method: 'GET',
-      headers: {
-        Accept: 'application/json'
-      },
-      params: {
-        limit: 30,
-        page: 1
-      }
-    }).then(results => {
-      // console.log(results.data.results)
-      const returnedArray = results.data.results;
 
-      // returnedArray.forEach((joke) => {
-      //   console.log(joke);
-      // });
-
-      returnedArray.forEach((joke) => {
-        joke.index = 0
-        joke.value = 0
-        joke.likeCount = 0
-        joke.dislikeCount = 0
-        joke.neutralCount = 0
-      })
-      console.log(returnedArray);
-
-      // returnedArray.forEach((index) =>{
-      //   // value: 0,
-      //   // likeCount: 0,
-      //   // dislikeCount: 0,
-      //   // neutralCount: 0
-      // })
-      // for each item add index -- parameter, value, like count, dislike count, neutral count
-
-
-      this.setState({
-
-        jokesFirebase: results.data.results,
-      })
-    })
 
 
 
@@ -92,13 +73,15 @@ class App extends Component {
     const dbRef = firebase.database().ref()
     dbRef.on('value', response => {
       let data = response.val()
+      console.log("This is data", data);
       const newList = []
-      console.log(newList)
+      // console.log(newList)
 
       /* console.log(data) */
 
       for (let key in data) {
         const newItem = data[key]
+        console.log("This is new item", newItem);
         newItem.forEach(joke => {
           newList.push({
             id: joke.id,
@@ -108,9 +91,8 @@ class App extends Component {
             likeCount: joke.likeCount,
             dislikeCount: joke.dislikeCount,
             neutralCount: joke.neutralCount
-
-
           })
+
           this.setState({
             jokesFirebaseUse: newList
           })
@@ -137,8 +119,11 @@ class App extends Component {
   }
 
   // event handling for joke voting
-  handleLikeVote = () => {
-    console.log('hello')
+  handleLikeVote = (jokeId) => {
+    console.log(jokeId);
+
+    const dbRef = firebase.database().ref(jokeId);
+    dbRef.update({value: 2});
   }
 
   render() {
@@ -164,8 +149,11 @@ class App extends Component {
             handleDailyJoke={this.handleDailyJoke}
           />
         )}
-        {/* display list of jokes */}
-        <PrintJokes print={this.state.jokesFirebaseUse} handleLikeVote={this.handleLikeVote} />
+
+        <SubmitJoke />
+
+        {/* {/* display list of jokes */}
+        <PrintJoke print={this.state.jokesFirebaseUse} handleLikeVote={this.handleLikeVote} />
       </div>
     )
   }
