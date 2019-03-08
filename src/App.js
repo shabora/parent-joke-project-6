@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Header from './components/Header.js'
 import Nav from './components/Nav.js'
 import firebase from './components/firebase.js'
 import DisplayDailyJoke from './components/DisplayDailyJoke.js'
-import GetJokeButton from './components/GetJokeButton'
 import PrintJoke from './components/PrintJoke.js';
 import SubmitJoke from './components/SubmitJoke.js';
+import LandingPage from './components/LandingPage.js';
 
 
 
@@ -120,35 +121,44 @@ class App extends Component {
 
   render() {
     return (
-      <div className='App'>
-        <header>
-          <Header textLanding='Welcome to Shabora' />
+      <Router>
+        <div className='App'>
+          <header>
+            <Header textLanding='Welcome to Shabora' />
 
-          <nav>
-            <Nav />
-          </nav>
+            <nav>
+              <Nav />
+            </nav>
 
-        </header>
-        {/* Daily Joke Page */}
-        {this.state.jokeButtonShow === true && (
-          <GetJokeButton handleDailyJoke={this.handleDailyJoke}
-          />
-        )}
-        {this.state.jokeButtonShow === false && (
-          <DisplayDailyJoke
-            dailyJoke={this.state.jokesList}
+          </header>
+
+          {/* LANDING PAGE PLACE HOLDER */}
+          <Route path="/" exact component={LandingPage} />
+          
+          
+
+          {/* Daily Joke Page */}
+          {/* <Route path="/dailyJoke" exact component={DisplayDailyJoke} 
             handleDailyJoke={this.handleDailyJoke}
-          />
-        )}
+            dailyJoke={this.state.jokesList}
+          /> */}
 
-        <SubmitJoke
-        handleChange={this.handleChange}
-        handleJokeSubmit={this.handleJokeSubmit}
-        userSubmittedJoke={this.state.userSubmittedJoke} />
+          <DisplayDailyJoke
 
-        {/* {/* display list of jokes */}
-        <PrintJoke handleLike={this.handleLike} jokesFirebaseUse={this.state.jokesFirebaseUse} />
-      </div>
+            handleDailyJoke={this.handleDailyJoke}
+            dailyJoke={this.state.jokesList}
+            />
+
+          <SubmitJoke
+            handleChange={this.handleChange}
+            handleJokeSubmit={this.handleJokeSubmit}
+            userSubmittedJoke={this.state.userSubmittedJoke} />
+
+          {/* {/* display list of jokes */}
+          <PrintJoke handleLike={this.handleLike} jokesFirebaseUse={this.state.jokesFirebaseUse} />
+        </div>
+      </Router>
+      
     )
   }
 }
