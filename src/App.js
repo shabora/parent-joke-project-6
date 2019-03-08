@@ -40,15 +40,15 @@ class App extends Component {
     dbRef.on('value', response => {
       let data = response.val()
       // console.log("This is data", data);
-      console.log(data)
+      // console.log(data)
       const newList = []  
       for(let key in data){
-        console.log(data[key])
+        // console.log(data[key])
         data[key].key = key 
     
         newList.push(data[key])
       }
-      console.log(newList);
+      // console.log(newList);
       this.setState({
         jokesFirebaseUse: newList,
       })
@@ -68,7 +68,7 @@ class App extends Component {
     }) 
   }
   handleLike = (id) =>{
-    console.log('jokeId', id);
+    // console.log('jokeId', id);
     // const dbRef = firebase.database().ref('parent-joke/id');
     // dbRef.update({
     //   userValue
@@ -132,7 +132,6 @@ class App extends Component {
         {/* Daily Joke Page */}
         {this.state.jokeButtonShow === true && (
           <GetJokeButton handleDailyJoke={this.handleDailyJoke}
-            pushToFirebase={this.pushToFirebase}
           />
         )}
         {this.state.jokeButtonShow === false && (

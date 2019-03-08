@@ -4,21 +4,22 @@ import firebase from './firebase.js'
 class Counter extends Component {
     constructor(){
         super()
-
+        
         this.state = {
             userValue: 0,
             userIndex: 0,
             likeCount: 0,
             dislikeCount: 0,
             neutralCount: 0,
-        };
+        }
     }
 
-    componentDidMount(props){
+
+    componentDidMount(){
         const dbRef = firebase.database().ref(this.props.jokeId)
         dbRef.on('value', response => {
             let data = response.val()
-            console.log(data);
+            // console.log(data);
 
             const valueFromFirebase = data.userValue;
             const indexFromFirebase = data.index;
@@ -36,12 +37,14 @@ class Counter extends Component {
         })
 }
     
-    incrementScore = (props) => {
+    incrementScore = () => {
+        console.log("like clicked");
         this.setState(prevState => ({
+            ...this.state,
             userValue: prevState.userValue + 1,
             likeCount: prevState.likeCount + 1
         }));
-        console.log(this.props.jokeId);
+        // console.log(this.props.jokeId);
         const dbRef = firebase.database().ref(this.props.jokeId);
             dbRef.update({
                 userValue: this.state.userValue,
@@ -49,8 +52,10 @@ class Counter extends Component {
             })
     }
 
-    decrementScore = (props) => {
+    decrementScore = () => {
+        console.log("dislike clicked");
         this.setState(prevState => ({
+            ...this.state,
             userValue: prevState.userValue - 1,
             dislikeCount: prevState.dislikeCount + 1
         }));
@@ -61,8 +66,10 @@ class Counter extends Component {
         })
     }
 
-    neutralScore = (props) => {
+    neutralScore = () => {
+        console.log("neutral clicked");
         this.setState(prevState => ({
+            ...this.state,
             neutralCount: prevState.neutralCount + 1
         }))
         const dbRef = firebase.database().ref(this.props.jokeId);
@@ -82,5 +89,4 @@ class Counter extends Component {
         );
     }
 }
-
 export default Counter;
