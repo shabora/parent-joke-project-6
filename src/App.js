@@ -54,25 +54,6 @@ class App extends Component {
         jokesFirebaseUse: newList,
       })
 
-      // const dbRef = firebase.database().ref(this.props.jokeId)
-      // dbRef.on('value', response => {
-      //   let data = response.val()
-      //   // console.log(data);
-
-      //   const valueFromFirebase = data.userValue;
-      //   const indexFromFirebase = data.index;
-      //   const likeFromFirebase = data.likeCount;
-      //   const dislikeFromFirebase = data.dislikeCount;
-      //   const neutralFromFirebase = data.neutralCount;
-
-      //   this.setState({
-      //     userValue: valueFromFirebase,
-      //     userIndex: indexFromFirebase,
-      //     likeCount: likeFromFirebase,
-      //     dislikeCount: dislikeFromFirebase,
-      //     neutralCount: neutralFromFirebase,
-      //   })
-    
     })
   }
 
@@ -172,21 +153,27 @@ class App extends Component {
           
 
           {/* Daily Joke Page */}
-          {/* <Route path="/dailyJoke" exact component={DisplayDailyJoke} 
-            handleDailyJoke={this.handleDailyJoke}
-            dailyJoke={this.state.jokesList}
-          /> */}
+          <Route path="/dailyjoke" render={()=>{return(<DisplayDailyJoke dailyJoke={this.state.jokesList}
+          handleDailyJoke={this.handleDailyJoke}
+          />)}} 
+        
+          />
 
-          <DisplayDailyJoke
+          <Route path="/submitjoke" render={()=> {return(<SubmitJoke handleChange={this.handleChange}
+          handleJokeSubmit={this.handleJokeSubmit}
+          userSubmittedJoke={this.state.userSubmittedJoke}/>)}}  />
 
-            handleDailyJoke={this.handleDailyJoke}
-            dailyJoke={this.state.jokesList}
-            />
 
-          <SubmitJoke
+
+
+
+
+
+
+         {/*  <SubmitJoke
             handleChange={this.handleChange}
             handleJokeSubmit={this.handleJokeSubmit}
-            userSubmittedJoke={this.state.userSubmittedJoke} />
+            userSubmittedJoke={this.state.userSubmittedJoke} /> */}
 
           {/* {/* display list of jokes */}
           <PrintJoke 
