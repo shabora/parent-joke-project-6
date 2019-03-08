@@ -80,42 +80,43 @@ class App extends Component {
   // Counter Handling
   incrementScore = () => {
         console.log("like clicked");
-        this.setState(prevState => ({
-          ...this.state,
+        this.setState.firebaseUse(prevState => ({
+          ...this.state.firebaseUse,
           userValue: prevState.userValue + 1,
           likeCount: prevState.likeCount + 1
         }));
         // console.log(this.props.jokeId);
         const dbRef = firebase.database().ref(this.props.jokeId);
         dbRef.update({
-          userValue: this.state.userValue,
-          likeCount: this.state.likeCount
+          userValue: this.state.firebaseUse.userValue,
+          likeCount: this.state.firebaseUse.likeCount
         })
       }
 
     decrementScore = () => {
         console.log("dislike clicked");
-        this.setState(prevState => ({
-          ...this.state,
+      this.setState.firebaseUse(prevState => ({
+        ...this.state.firebaseUse,
           userValue: prevState.userValue - 1,
           dislikeCount: prevState.dislikeCount + 1
         }));
         const dbRef = firebase.database().ref(this.props.jokeId);
         dbRef.update({
-          userValue: this.state.userValue,
-          dislikeCount: this.state.dislikeCount
+          userValue: this.state.firebaseUse.userValue,
+          dislikeCount: this.state.firebaseUse.dislikeCount
         })
       }
 
     neutralScore = () => {
         console.log("neutral clicked");
         let count = this.state.neutralCount
-        this.setState({
+      this.setState.firebaseUse({
+        ...this.state.firebaseUse,
           neutralCount: count + 1
         }(() => {
           const dbRef = firebase.database().ref(this.props.jokeId);
           dbRef.update({
-            neutralCount: this.state.neutralCount
+            neutralCount: this.state.firebaseUse.neutralCount
           })
 
         }))
