@@ -142,10 +142,15 @@ class App extends Component {
             <Header textLanding='Welcome to Shabora' />
 
             <nav>
-              <Nav />
+              <Nav 
+                
+              
+
+              />
             </nav>
 
           </header>
+         
 
           {/* LANDING PAGE PLACE HOLDER */}
           <Route path="/" exact component={LandingPage} />
@@ -164,7 +169,10 @@ class App extends Component {
           userSubmittedJoke={this.state.userSubmittedJoke}/>)}}  />
 
 
-
+          <Route path="/vote" render={()=>{return(<PrintJoke incrementScore={this.incrementScore}
+        decrementScore={this.decrementScore}
+        neutralScore={this.neutralScore}
+        jokesFirebaseUse={this.state.jokesFirebaseUse}/>)}}/> 
 
 
 
@@ -176,11 +184,11 @@ class App extends Component {
             userSubmittedJoke={this.state.userSubmittedJoke} /> */}
 
           {/* {/* display list of jokes */}
-          <PrintJoke 
+         {/*  <PrintJoke 
            incrementScore={this.incrementScore}
            decrementScore={this.decrementScore}
            neutralScore={this.neutralScore}
-           jokesFirebaseUse={this.state.jokesFirebaseUse} />
+           jokesFirebaseUse={this.state.jokesFirebaseUse} /> */}
         </div>
       </Router>
       
