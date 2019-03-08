@@ -50,7 +50,7 @@ class App extends Component {
       }
       console.log(newList);
       this.setState({
-        jokesFirebaseUse:newList,
+        jokesFirebaseUse: newList,
       })
     
     })
@@ -68,10 +68,18 @@ class App extends Component {
     }) 
   }
   handleLike = (id) =>{
-    const dbRef = firebase.database().ref(id);
-    dbRef.update({
-      userValue: 1
-    })
+    console.log('jokeId', id);
+    // const dbRef = firebase.database().ref('parent-joke/id');
+    // dbRef.update({
+    //   userValue
+    // })
+
+    // console.log(e.target.name);
+
+    // console.log(e.target.value)
+    // dbRef.update({
+    //   userValue: this.state.jokesFirebaseUse.value + 1
+    // })
 
   }
 
@@ -140,7 +148,7 @@ class App extends Component {
         userSubmittedJoke={this.state.userSubmittedJoke} />
 
         {/* {/* display list of jokes */}
-        <PrintJoke handleLike={this.handleLike} jokesFirebaseUse={this.state.jokesFirebaseUse} handleLikeVote={this.handleLikeVote} />
+        <PrintJoke handleLike={this.handleLike} jokesFirebaseUse={this.state.jokesFirebaseUse} />
       </div>
     )
   }

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import Counter from './Counter.js';
 
 const PrintJoke = (props) =>{
     return(
@@ -10,9 +11,7 @@ const PrintJoke = (props) =>{
                 <p>{joke.userJoke}</p>
                 <h2>{joke.userName}</h2>
                 <h2>{joke.userDepartment}</h2>
-                <button onClick={()=>props.handleLike(joke.key)}>Like</button>
-                <button>Dont Like</button>
-                <button>Do not get it?</button>
+                <Counter jokeId={joke.key} />
 
 
             </div>
