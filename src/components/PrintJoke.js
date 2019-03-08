@@ -1,5 +1,5 @@
 import React from 'react';
-import Counter from './Counter.js';
+
 
 const PrintJoke = (props) =>{
     return(
@@ -11,15 +11,9 @@ const PrintJoke = (props) =>{
                 <p>{joke.userJoke}</p>
                 <h2>{joke.userName}</h2>
                 <h2>{joke.userDepartment}</h2>
-                <Counter  
-                jokesFirebaseUse={props.jokesFirebaseUse}
-                jokeId={joke.key} 
-                incrementScore={props.incrementScore}
-                decrementScore={props.decrementScore}
-                neutralScore={props.neutralScore}
-                />
-
-
+            <button className="counter-action increment" onClick={()=>props.incrementScore(joke.key, joke.likeCount)}>Like is at{joke.likeCount}</button>
+            <button onClick={props.neutralScore}>Don't Get It:{joke.neutralCount}</button>
+            <button className="counter-action decrement" onClick={props.decrementScore}>Don't Like it is {joke.dislikeCount}</button>
             </div>
         )
     })}

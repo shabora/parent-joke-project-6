@@ -78,19 +78,19 @@ class App extends Component {
 
 
   // Counter Handling
-  incrementScore = () => {
-        console.log("like clicked");
-        this.setState.firebaseUse(prevState => ({
-          ...this.state.firebaseUse,
-          userValue: prevState.userValue + 1,
+  incrementScore = (id, value) => {
+    
+
+console.log(id, value)
+       /* this.setState.firebaseUse(prevState => ({
+          ...this.state.firebaseUse
           likeCount: prevState.likeCount + 1
-        }));
+        })); */
         // console.log(this.props.jokeId);
-        const dbRef = firebase.database().ref(this.props.jokeId);
-        dbRef.update({
-          userValue: this.state.firebaseUse.userValue,
-          likeCount: this.state.firebaseUse.likeCount
-        })
+      const dbRef = firebase.database().ref(id);
+      dbRef.update({
+          likeCount: value +1
+        })  
       }
 
     decrementScore = () => {
