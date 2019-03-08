@@ -53,9 +53,73 @@ class App extends Component {
       this.setState({
         jokesFirebaseUse: newList,
       })
+
+      // const dbRef = firebase.database().ref(this.props.jokeId)
+      // dbRef.on('value', response => {
+      //   let data = response.val()
+      //   // console.log(data);
+
+      //   const valueFromFirebase = data.userValue;
+      //   const indexFromFirebase = data.index;
+      //   const likeFromFirebase = data.likeCount;
+      //   const dislikeFromFirebase = data.dislikeCount;
+      //   const neutralFromFirebase = data.neutralCount;
+
+      //   this.setState({
+      //     userValue: valueFromFirebase,
+      //     userIndex: indexFromFirebase,
+      //     likeCount: likeFromFirebase,
+      //     dislikeCount: dislikeFromFirebase,
+      //     neutralCount: neutralFromFirebase,
+      //   })
     
     })
   }
+
+
+  // Counter Handling
+  incrementScore = () => {
+        console.log("like clicked");
+        this.setState(prevState => ({
+          ...this.state,
+          userValue: prevState.userValue + 1,
+          likeCount: prevState.likeCount + 1
+        }));
+        // console.log(this.props.jokeId);
+        const dbRef = firebase.database().ref(this.props.jokeId);
+        dbRef.update({
+          userValue: this.state.userValue,
+          likeCount: this.state.likeCount
+        })
+      }
+
+    decrementScore = () => {
+        console.log("dislike clicked");
+        this.setState(prevState => ({
+          ...this.state,
+          userValue: prevState.userValue - 1,
+          dislikeCount: prevState.dislikeCount + 1
+        }));
+        const dbRef = firebase.database().ref(this.props.jokeId);
+        dbRef.update({
+          userValue: this.state.userValue,
+          dislikeCount: this.state.dislikeCount
+        })
+      }
+
+    neutralScore = () => {
+        console.log("neutral clicked");
+        let count = this.state.neutralCount
+        this.setState({
+          neutralCount: count + 1
+        }(() => {
+          const dbRef = firebase.database().ref(this.props.jokeId);
+          dbRef.update({
+            neutralCount: this.state.neutralCount
+          })
+
+        }))
+      }
 
   // Handle change to get text inputs from submit joke
   handleChange = (event) => {
@@ -67,21 +131,6 @@ class App extends Component {
     this.setState({
       userSubmittedJoke:newObject
     }) 
-  }
-  handleLike = (id) =>{
-    // console.log('jokeId', id);
-    // const dbRef = firebase.database().ref('parent-joke/id');
-    // dbRef.update({
-    //   userValue
-    // })
-
-    // console.log(e.target.name);
-
-    // console.log(e.target.value)
-    // dbRef.update({
-    //   userValue: this.state.jokesFirebaseUse.value + 1
-    // })
-
   }
 
   handleJokeSubmit = (event) =>{
@@ -155,7 +204,11 @@ class App extends Component {
             userSubmittedJoke={this.state.userSubmittedJoke} />
 
           {/* {/* display list of jokes */}
-          <PrintJoke handleLike={this.handleLike} jokesFirebaseUse={this.state.jokesFirebaseUse} />
+          <PrintJoke 
+           incrementScore={this.incrementScore}
+           decrementScore={this.decrementScore}
+           neutralScore={this.neutralScore}
+           jokesFirebaseUse={this.state.jokesFirebaseUse} />
         </div>
       </Router>
       

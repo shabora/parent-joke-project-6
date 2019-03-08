@@ -11,7 +11,9 @@ const PrintJoke = (props) =>{
                 <p>{joke.userJoke}</p>
                 <h2>{joke.userName}</h2>
                 <h2>{joke.userDepartment}</h2>
-                <Counter jokeId={joke.key} />
+                <Counter  
+                jokesFirebaseUse={props.jokesFirebaseUse}
+                jokeId={joke.key} />
 
 
             </div>
