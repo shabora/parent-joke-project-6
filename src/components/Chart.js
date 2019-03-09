@@ -6,9 +6,9 @@ PieChart, Pie, Sector, Cell,
 
 const Chart = (props) => {
     const data = [
-        { name: 'Group A', value: { props.dislikeCount} },
-    { name: 'Group B', value: 100 },
-    { name: 'Group C', value: 100 },
+        { name: 'Dislike', value: props.dislikeCount },
+    { name: 'Like', value: props.likeCount },
+    { name: 'Neutral', value: props.neutralCount },
     ];
     
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
@@ -29,7 +29,7 @@ const Chart = (props) => {
     };
 
         return (
-        <PieChart width={400} height={400}>
+        <PieChart width={1000} height={1000}>
             <Pie
             data={data}
             cx={200}
