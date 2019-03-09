@@ -6,14 +6,20 @@ return (
 
 
     <div>
-        {/* {props.jokeButtonShow === true && ( */}
+        {props.jokeButtonShow === true && (
             <GetJokeButton handleDailyJoke={props.handleDailyJoke}
+            jokeButtonShow={props.jokeButtonShow}
+
             />
-        
-        {/* {props.state.jokeButtonShow === false && ( */}
-            <h2>{props.dailyJoke}</h2>
+        )}
+
+        {props.jokeButtonShow === false && (
+            <div>
+                <h2>{props.dailyJoke}</h2>
                 <button onClick={props.handleDailyJoke}>Generate another joke</button>
-          {/* )} */}
+            </div>
+            
+        )}
         
     </div>
 )

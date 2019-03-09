@@ -57,9 +57,8 @@ class App extends Component {
 
     })
  
-   /*  this.setState({
-      jokesFirebaseUse:newArray
-    }) */
+    // let topJoke= this.state.jokesFirebaseUse;
+    // console.log(topJoke);
   }
 
 
@@ -153,13 +152,13 @@ class App extends Component {
          
 
           {/* LANDING PAGE PLACE HOLDER */}
-          <Route path="/" exact component={LandingPage} />
+          <Route path="/" exact render={() => { return (<LandingPage jokesFirebaseUse={this.state.jokesFirebaseUse}/>)}} />
           
           
 
           {/* Daily Joke Page */}
           <Route path="/dailyjoke" render={()=>{return(<DisplayDailyJoke dailyJoke={this.state.jokesList}
-          handleDailyJoke={this.handleDailyJoke}
+            handleDailyJoke={this.handleDailyJoke} jokeButtonShow={this.state.jokeButtonShow}
           />)}} 
         
           />
@@ -173,22 +172,6 @@ class App extends Component {
         decrementScore={this.decrementScore}
         neutralScore={this.neutralScore}
         jokesFirebaseUse={this.state.jokesFirebaseUse}/>)}}/> 
-
-
-
-
-
-         {/*  <SubmitJoke
-            handleChange={this.handleChange}
-            handleJokeSubmit={this.handleJokeSubmit}
-            userSubmittedJoke={this.state.userSubmittedJoke} /> */}
-
-          {/* {/* display list of jokes */}
-         {/*  <PrintJoke 
-           incrementScore={this.incrementScore}
-           decrementScore={this.decrementScore}
-           neutralScore={this.neutralScore}
-           jokesFirebaseUse={this.state.jokesFirebaseUse} /> */}
         </div>
       </Router>
       
