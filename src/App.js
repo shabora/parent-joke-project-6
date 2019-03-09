@@ -8,6 +8,7 @@ import DisplayDailyJoke from './components/DisplayDailyJoke.js'
 import PrintJoke from './components/PrintJoke.js';
 import SubmitJoke from './components/SubmitJoke.js';
 import LandingPage from './components/LandingPage.js';
+import './app.scss';
 
 
 

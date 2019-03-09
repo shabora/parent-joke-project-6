@@ -1,12 +1,12 @@
 
 import React from 'react';
 import {
-PieChart, Pie, Sector, Cell,
+PieChart, Pie, Legend, Cell,
 } from 'recharts';
 
 const Chart = (props) => {
     const data = [
-        { name: 'Dislike', value: props.dislikeCount },
+    { name: 'Dislike', value: props.dislikeCount },
     { name: 'Like', value: props.likeCount },
     { name: 'Neutral', value: props.neutralCount },
     ];
@@ -29,7 +29,8 @@ const Chart = (props) => {
     };
 
         return (
-        <PieChart width={1000} height={1000}>
+        <React.Fragment>
+        <PieChart width={1000} height={500}>
             <Pie
             data={data}
             cx={200}
@@ -44,7 +45,9 @@ const Chart = (props) => {
                 data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
             }
             </Pie>
+        <Legend iconSize={10} width={120} height={140} layout="vertical" verticalAlign="middle" />
         </PieChart>
+        </React.Fragment>
         );
     }
 
