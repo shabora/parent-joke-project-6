@@ -15,7 +15,12 @@ const PrintJoke = (props) =>{
             <button className="counter-action increment" onClick={()=>props.incrementScore(joke.key, joke.likeCount, joke.userValue)}>Like is at{joke.likeCount}</button>
             <button className="counter-action neutral" onClick={()=>props.neutralScore(joke.key, joke.neutralCount )}>Don't Get It:{joke.neutralCount}</button>
             <button className="counter-action decrement" onClick={()=>props.decrementScore(joke.key, joke.dislikeCount, joke.userValue )}>Don't Like it is {joke.dislikeCount}</button>
-            <Chart/>
+            <Chart
+            dislikeCount={joke.dislikeCount}
+            likeCount={joke.likeCount}
+            neutralCount={joke.neutralCount}
+
+            />
             </div>
 
         )
