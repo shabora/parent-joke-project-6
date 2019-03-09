@@ -9,8 +9,7 @@ const LandingPage = (props) => {
                     <div>
                         <p>{joke.userJoke}</p>
                         <p>{joke.userName}</p>
-                    <p>{joke.userDepartment}</p>
-
+                        <p>{joke.userDepartment}</p>
                     </div>
                 )
             }))
