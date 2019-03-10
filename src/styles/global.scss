@@ -21,7 +21,11 @@ form {
 }
 
 a:focus, a:active, button:focus, button:active {
-    border: 3px solid $dark-accent;
+    border: 1px dotted $dark-accent;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* Wrapper styles */

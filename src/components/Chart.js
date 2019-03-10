@@ -1,7 +1,7 @@
 
 import React from 'react';
 import {
-PieChart, Pie, Legend, Cell,
+PieChart, Pie, Legend, Cell, ResponsiveContainer
 } from 'recharts';
 
 const Chart = (props) => {
@@ -11,7 +11,7 @@ const Chart = (props) => {
     { name: 'Neutral', value: props.neutralCount },
     ];
     
-    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+    const COLORS = ['rgb(120,147,247)', 'rgb(87,5,197)', 'rgb(54, 53, 55)'];
     
     const RADIAN = Math.PI / 180;
     const renderCustomizedLabel = ({
@@ -30,23 +30,25 @@ const Chart = (props) => {
 
         return (
         <React.Fragment>
-        <PieChart width={1000} height={500}>
-            <Pie
-            data={data}
-            cx={200}
-            cy={200}
-            labelLine={false}
-            label={renderCustomizedLabel}
-            outerRadius={80}
-            fill="#8884d8"
-            dataKey="value"
-            >
-            {
-                data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
-            }
-            </Pie>
-        <Legend iconSize={10} width={120} height={140} layout="vertical" verticalAlign="middle" />
-        </PieChart>
+            <ResponsiveContainer width="100%" height={450}>
+                <PieChart width="100%" height={400}>
+                    <Pie
+                        data={data}
+                        cx={200}
+                        cy={200}
+                        labelLine={false}
+                        label={renderCustomizedLabel}
+                        outerRadius={200}
+                        fill="#8884d8"
+                        dataKey="value"
+                    >
+                        {
+                            data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+                        }
+                    </Pie>
+                    {/* <Legend iconSize={10} width={120} height={140} layout="vertical" verticalAlign="middle" /> */}
+                </PieChart>
+            </ResponsiveContainer>
         </React.Fragment>
         );
     }

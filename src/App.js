@@ -149,14 +149,15 @@ class App extends Component {
           
           {/* HEADER STARTS */}
           <header>
-            <Header textLanding='Shabora Global' />
-
             <nav>
               <Nav 
               showNav={this.state.showNav}
               handleNavShow={this.handleNavShow}    
               />
             </nav>
+            
+            <Header textLanding='Shabora Global' />
+
             
           {/* HEADER ENDS */}
           </header>
