@@ -1,28 +1,49 @@
-import React from 'react';
+
+import React, { Component } from 'react'
 import GetJokeButton from './GetJokeButton';
-
-const DisplayDailyJoke = props => {
-return (
+import Typed from 'react-typed';
 
 
+
+class DisplayDailyJoke extends Component {
+    
+    
+    render() {
+        const strings = this.props.dailyJoke
+    return (
     <div>
-        {props.jokeButtonShow === true && (
-            <GetJokeButton handleDailyJoke={props.handleDailyJoke}
-            jokeButtonShow={props.jokeButtonShow}
+        {this.props.jokeButtonShow === true && (
+            <GetJokeButton handleDailyJoke={this.props.handleDailyJoke}
+            jokeButtonShow={this.props.jokeButtonShow}
 
             />
         )}
 
-        {props.jokeButtonShow === false && (
+        {this.props.jokeButtonShow === false && (
             <div>
-                <h2>{props.dailyJoke}</h2>
-                <button onClick={props.handleDailyJoke}>Generate another joke</button>
+                <Typed 
+                    strings={[strings]} 
+                    typeSpeed={50} 
+                />
+                <button onClick={this.props.handleDailyJoke}>Generate another joke</button>
             </div>
             
         )}
-        
     </div>
-)
+    )
+}
 }
 
-export default DisplayDailyJoke;
+export default DisplayDailyJoke
+
+
+
+
+
+
+
+
+
+
+
+

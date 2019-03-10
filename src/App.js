@@ -41,8 +41,7 @@ class App extends Component {
     const dbRef = firebase.database().ref()
     dbRef.on('value', response => {
       let data = response.val()
-      // console.log("This is data", data);
-      // console.log(data)
+ 
       const newList = []  
       for(let key in data){
         // console.log(data[key])
@@ -115,9 +114,14 @@ class App extends Component {
     })
   }
 
-
+  empty=()=>{
+    this.setState({
+      jokesList: null,
+    })
+  }
 
   handleDailyJoke = () => {
+    this.empty()
     axios({
       url: 'https://icanhazdadjoke.com/',
       method: 'GET',
@@ -142,6 +146,7 @@ class App extends Component {
         <div className='App'>
           <header>
             <Header textLanding='Welcome to Shabora' />
+      
 
             <nav>
               <Nav 
