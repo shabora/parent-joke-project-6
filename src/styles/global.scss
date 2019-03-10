@@ -1,0 +1,66 @@
+/* Default styles */
+img {
+    max-width:100%;
+    width: 100%;
+    display: block;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+h1, p {
+    margin: 0;
+}
+
+form {
+	padding: 0;
+	margin: 0;
+}
+
+a:focus, a:active, button:focus, button:active {
+    border: 3px solid $dark-accent;
+}
+
+/* Wrapper styles */
+.wrapper {
+	max-width: 1600px;
+	width: 80%;
+	margin: 0 auto;
+}
+
+/* Font and Background Styles */
+html {
+    font-size: 125%;
+}
+
+body {
+    font-family: $body-font;
+    background: linear-gradient(to bottom, rgba(230,224,224, 0.4),rgba(230,224,224, 0.4)), url(./assets/background-image.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+// Font Styles
+
+h1 {
+    font-family: $accent-font;
+    font-size: 4rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: $dark-accent;
+    letter-spacing: 5px;
+    border-bottom: 2px solid $light-accent;
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 3rem;
+    text-align: center;
+    color: $darken-dark-accent;
+    letter-spacing: 2px;
+}

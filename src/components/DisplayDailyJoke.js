@@ -1,22 +1,22 @@
 import React from 'react';
-import GetJokeButton from './GetJokeButton';
 
 const DisplayDailyJoke = props => {
 return (
 
-
-    <div>
+    <div className="daily-joke-container">
         {props.jokeButtonShow === true && (
-            <GetJokeButton handleDailyJoke={props.handleDailyJoke}
-            jokeButtonShow={props.jokeButtonShow}
-
-            />
+            <button
+                onClick={props.handleDailyJoke}
+                className="button">
+                Click Me</button>
         )}
 
         {props.jokeButtonShow === false && (
-            <div>
-                <h2>{props.dailyJoke}</h2>
-                <button onClick={props.handleDailyJoke}>Generate another joke</button>
+            <div className="joke-card">
+                <p>{props.dailyJoke}</p>
+                <button 
+                onClick={props.handleDailyJoke}
+                className="button">Get another joke</button>
             </div>
             
         )}

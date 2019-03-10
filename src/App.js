@@ -20,6 +20,7 @@ class App extends Component {
       jokesList: null,
       jokeButtonShow: true,
       jokesFirebaseUse: [],
+      showNav: false,
       userSubmittedJoke: {
         userName: "",
         userDepartment: "",
@@ -57,9 +58,6 @@ class App extends Component {
       })
 
     })
- 
-    // let topJoke= this.state.jokesFirebaseUse;
-    // console.log(topJoke);
   }
 
 
@@ -89,6 +87,8 @@ class App extends Component {
         })
       }
 
+  // EVENT HANDLING
+
   // Handle change to get text inputs from submit joke
   handleChange = (event) => {
     
@@ -115,8 +115,6 @@ class App extends Component {
     })
   }
 
-
-
   handleDailyJoke = () => {
     axios({
       url: 'https://icanhazdadjoke.com/',
@@ -134,21 +132,33 @@ class App extends Component {
     })
   }
 
+  handleNavShow = () => {
+    this.setState({
+      showNav: !this.state.showNav,
+    })
+  }
+
   // event handling for joke votin
 
   render() {
     return (
       <Router>
         <div className='App'>
+          {/* WRAPPER STARTS */}
+          <div className="wrapper">
+          
+          {/* HEADER STARTS */}
           <header>
-            <Header textLanding='Welcome to Shabora' />
+            <Header textLanding='Shabora Global' />
 
             <nav>
               <Nav 
-                
-          />
+              showNav={this.state.showNav}
+              handleNavShow={this.handleNavShow}    
+              />
             </nav>
-
+            
+          {/* HEADER ENDS */}
           </header>
          
 
@@ -174,6 +184,9 @@ class App extends Component {
         neutralScore={this.neutralScore}
         jokesFirebaseUse={this.state.jokesFirebaseUse}/>)}}/> 
         </div>
+
+          {/* WRAPPER ENDS */}
+          </div>
       </Router>
       
     )

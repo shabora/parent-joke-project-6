@@ -1,0 +1,17 @@
+.button {
+    background: $background;
+    font-size: 1.5rem;
+    color: $dark-accent;
+    text-transform: uppercase;
+    border: 3px solid $dark-accent;
+    padding: 20px;
+    margin: 20px;
+    font-weight: 900;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background: $dark-accent;
+    color: $background;
+    border-color: $background;
+}

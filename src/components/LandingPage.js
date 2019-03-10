@@ -6,10 +6,19 @@ const LandingPage = (props) => {
         {
             props.jokesFirebaseUse.slice(0,1).map((joke=>{
                 return(
-                    <div>
-                        <p>{joke.userJoke}</p>
-                        <p>{joke.userName}</p>
-                        <p>{joke.userDepartment}</p>
+                    <div className="landing-page-container">
+
+                        {/* Section instructions */}
+                        <h2>Welcome to Parent Joke</h2>
+                        <p>Some background about why we made the page.</p>
+
+                        <div className="joke-card top-joke-container">
+                            {/* Joke */}
+                            <p>{joke.userJoke}</p>
+
+                            {/* Name and Department */}
+                            <h3>{joke.userName}, {joke.userDepartment}</h3>
+                        </div>
                     </div>
                 )
             }))
