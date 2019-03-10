@@ -1,0 +1,73 @@
+.submit-joke-container {
+    width:100%;
+    border:5px solid $dark-accent;
+    background:$light-accent;
+    border-radius:5px;
+
+    .form-description{
+        width:100%;
+        text-align: center;
+        padding:10px 20px;
+        h2{
+            font-size:1.5rem;
+            background:white;
+            width:50%;
+            margin: 0 auto;
+            border-radius:5px;
+            margin-bottom: 20px;
+            padding:10px 20px;
+            
+        }
+        p{
+            color: $dark-accent;
+            font-weight: bold;
+            background:white;
+            width: 50%;
+            margin: 0 auto;
+            padding:10px 20px;
+            border-radius: 5px;
+        }
+    }
+    .form{
+        width:90%;
+        margin: 0 auto;
+
+        .input{
+            width:100%;
+
+                input{
+                    width:45%;
+                    border-radius: 5px;
+                    border:none;
+                    padding:10px 20px;
+                    margin: 20px 0;
+                }
+                input#name {
+                    float:left;
+                    text-align: center;
+                }
+                input#department {
+                float:right;
+                text-align: center;
+                }
+
+        }
+        .textfield{
+            width:100%;
+            margin:10px 0;
+
+            textarea{
+                width:100%;
+                border-radius: 5px;
+                padding:10px 20px;
+            }
+
+        }
+        .submit{
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+}
+
