@@ -1,23 +1,23 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Typed from 'react-typed';
 import axios from 'axios';
 
 
 class DisplayDailyJoke extends Component {
-   constructor(){
-       super()
-       this.state={
-           jokesList:null,
-           jokeButtonShow:true,
-       }
-   }
+  constructor() {
+    super()
+    this.state = {
+      jokesList: null,
+      jokeButtonShow: true,
+    }
+  }
 
 
-    handleDailyJoke = () => {
-     console.log(this, 'this')
-     if(this.typed ){
-         this.typed.reset()
-     }
+  handleDailyJoke = () => {
+    console.log(this, 'this')
+    if (this.typed) {
+      this.typed.reset()
+    }
     axios({
       url: 'https://icanhazdadjoke.com/',
       method: 'GET',
@@ -32,37 +32,39 @@ class DisplayDailyJoke extends Component {
       })
     })
   }
-    
-    render() {
-        
+
+  render() {
+
     return (
-    <div className="daily-joke-container">
-            <h2>Get a Joke!</h2>
-            <p>Click the icon below to get your daily dose of funny!</p>
+      <div className="daily-joke-container">
+        <h2>Get a Joke!</h2>
+        <p>Click the icon below to get your daily dose of funny!</p>
 
         {this.state.jokeButtonShow === true && (
-            <button
-                onClick={this.handleDailyJoke}
-                className="button">
-                Click Me</button>
+          <button
+            onClick={this.handleDailyJoke}
+            className="get-joke-button">
+            <i class="far fa-laugh-squint"></i></button>
         )}
 
         {this.state.jokeButtonShow === false && (
-            <div className="joke-card">
-                    <p><Typed
-                        strings={[this.state.jokesList]}
-                        typeSpeed={50}
-                        typedRef={(typed) => { this.typed = typed; }}
-                    /></p>
-                <button 
-                onClick={this.handleDailyJoke}
-                className="button">Generate another joke</button>
+          <div className="daily-joke-container">
+          <div className="joke-card">
+            <p><Typed
+              strings={[this.state.jokesList]}
+              typeSpeed={50}
+              typedRef={(typed) => { this.typed = typed; }}
+            /></p>
             </div>
+            <button
+              onClick={this.handleDailyJoke}
+              className="button">Another One!</button>
+          </div>
         )}
-    </div>
-    
+      </div>
+
     )
-}
+  }
 }
 
 export default DisplayDailyJoke

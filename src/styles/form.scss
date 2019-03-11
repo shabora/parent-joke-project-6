@@ -73,8 +73,32 @@ height: 0;
             input#name {
                 margin-bottom:5%;
             }
-
-
+            .textfield{
+                width: calc(48% - 20px);
+                float:right;
+                margin-left:20px;
+                textarea{
+                    width:100%;
+                    border-radius: 5px;
+                    padding:10px 20px;
+                    outline: 0;
+                    border-width: 5px;
+                    border-color: $dark-accent;
+                    display: block;
+                    background: white;
+                    font-size: 1rem;
+                    line-height: 1.9;
+                    color: black;
+                    transition: all 0.28s ease;
+                    box-shadow: none;
+                    height: 222px;
+                    resize: none;
+                }
+                textarea:focus {
+                    border-color: $light-accent;
+                }
+            }
+        }
 
         }
         .textfield{
@@ -100,4 +124,3 @@ height: 0;
             }
         }
     }
-}

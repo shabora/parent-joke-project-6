@@ -29,7 +29,7 @@ return(
                     </div>
                     <div className="textfield">
                         <label htmlFor="joke" name="joke" className="visually-hidden">Tell us your joke!</label>
-                        <textarea name="userJoke" id="joke" cols="30" rows="10" required placeholder="Tell us your joke!"
+                        <textarea name="userJoke" id="joke" cols="30" rows="10" resize="none" required placeholder="Tell us your joke!"
                         onChange={props.handleChange}
                         value={props.userSubmittedJoke.userJoke}></textarea>
                         <div className="submit">
