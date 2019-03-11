@@ -37,6 +37,9 @@ class DisplayDailyJoke extends Component {
         
     return (
     <div className="daily-joke-container">
+            <h2>Get a Joke!</h2>
+            <p>Click the icon below to get your daily dose of funny!</p>
+
         {this.state.jokeButtonShow === true && (
             <button
                 onClick={this.handleDailyJoke}

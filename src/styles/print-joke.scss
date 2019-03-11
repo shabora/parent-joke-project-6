@@ -72,7 +72,16 @@
     }
 }
 
-// Centering chart
+// Chart styles
+.view-stats {
+    display: none;
+
+    @include tablet {
+       display: block;
+       padding: 20px 0;
+       border-top: 1px solid $light-accent;
+    }
+}
 
 // ADJUST RECHARTS FOR RESPONSIVE!!!
 .recharts-surface {
@@ -150,4 +159,18 @@
 .vote-button:hover {
     transform: scale(1.3);
     color: $darken-light-accent;
+}
+
+// Font-styles
+.print-joke-para {
+    @include mobile {
+        font-size: 1rem;
+    }
+}
+
+
+.print-joke-name-department {
+    @include mobile {
+        font-size: 1.5rem;
+    }
 }

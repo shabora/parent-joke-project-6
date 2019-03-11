@@ -28,15 +28,18 @@ const PrintJoke = (props) =>{
                         {/* Joke Container starts */}
                         <div className="joke-container">
                             {/* Joke */}
-                            <p>{joke.userJoke}</p>
+                            <p className="print-joke-para">{joke.userJoke}</p>
 
                             {/* Name and Department*/}
-                            <h3>{joke.userName}, {joke.userDepartment}</h3>
+                            <h3 className="print-joke-name-department">{joke.userName}, {joke.userDepartment}</h3>
                         {/* Joke Container ends */}
                         </div>
 
                         {/* Chart Container starts */}
                         <div className="chart-container">
+
+                            {/* Mobile/Tablet text */}
+                            <h4 className="view-stats">View the Stats:</h4>
                             {/* Legend */}
                             <p className="legend">
                             <span className="box purple"></span> = Like
