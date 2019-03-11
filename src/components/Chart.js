@@ -30,15 +30,15 @@ const Chart = (props) => {
 
         return (
         <React.Fragment>
-            <ResponsiveContainer width="100%" height={300}>
-                <PieChart width={100} height={100}>
+            <ResponsiveContainer width={310} height={310} margin="auto">
+                <PieChart width={300} height={300}>
                     <Pie
                         data={data}
-                        cx={100}
-                        cy={100}
+                        cx={150}
+                        cy={150}
                         labelLine={false}
                         label={renderCustomizedLabel}
-                        outerRadius={100}
+                        outerRadius={140}
                         fill="#8884d8"
                         dataKey="value"
                     >
