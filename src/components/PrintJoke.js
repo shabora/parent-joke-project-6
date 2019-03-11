@@ -58,10 +58,7 @@ const PrintJoke = (props) =>{
 
                     {/* Flip Container ends */}
                     </div>
-
-
-                    
-                    
+   
                     {/* VOTING CONTAINER */}
                     <div className="voting-container">
                         {/* Like Button */}
@@ -82,10 +79,10 @@ const PrintJoke = (props) =>{
                         <i class="far fa-thumbs-down"></i> {joke.dislikeCount}</button>
 
                         {/* Hover button */}
-                        <button className="button">Hover for data!</button>
+                        <button className=" flip-data-button button ">Hover for data!</button>
                     </div>
 
-                    
+                {/* Joke Card ends */}
                 </div>
             
             {/* Print Joke Container ends */}
