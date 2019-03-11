@@ -81,11 +81,18 @@
        padding: 20px 0;
        border-top: 1px solid $light-accent;
     }
+
+    @include mobile {
+        font-size: 1.5rem;
+    }
 }
 
 // ADJUST RECHARTS FOR RESPONSIVE!!!
-.recharts-surface {
-    background: tomato;
+.recharts-responsive-container, .recharts-surface, .recharts-wrapper {
+
+    @include mobile {
+        width: 270px;
+    }
 }
 
 .recharts-responsive-container {
@@ -105,13 +112,16 @@
 
 .legend {
     text-align: center;
+
+    @include mobile {
+        font-size: 1rem;
+    }
 }
 
 .box {
     display: inline-block;
     width: 20px;
     height: 18px;
-    background: tomato;
 }
 
 .purple {
@@ -150,6 +160,11 @@
     border: 1px dotted transparent;
     background: transparent;
     transition: all 500ms;
+
+    @include mobile {
+        font-size: 1.5rem;
+        margin: 0 5px;
+    }
 }
 
 .vote-icon {
@@ -161,16 +176,10 @@
     color: $darken-light-accent;
 }
 
-// Font-styles
-.print-joke-para {
-    @include mobile {
-        font-size: 1rem;
-    }
-}
-
 
 .print-joke-name-department {
     @include mobile {
         font-size: 1.5rem;
     }
 }
+
