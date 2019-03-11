@@ -14,10 +14,10 @@ const PrintJoke = (props) =>{
     { props.jokesFirebaseUse.map((joke, index) =>{
         return(
             // Print Joke Container Starts
-            <div className="print-joke-container">
+            <div key={joke.key}className="print-joke-container">
 
                 {/* Joke Card */}
-                <div key={joke.key} index={index} id={joke.key} className="joke-card">
+                <div  index={index} id={joke.key} className="joke-card">
                     
                     {/* Flip Container starts */}
                     <div className="flip-container">
@@ -38,11 +38,10 @@ const PrintJoke = (props) =>{
                         {/* Chart Container starts */}
                         <div className="chart-container">
                             {/* Legend */}
-                            <p className="legend">Purple = Like</p>
-
-                            <p className="legend dislike-legend">Blue = Dislike</p>
-
-                            <p className="legend neutral-legend">Grey = Neutral</p>
+                            <p className="legend">
+                            <span className="box purple"></span> = Like
+                            <span className="box blue"></span> = Dislike
+                            <span className="box grey"></span> = Neutral</p>
 
                             {/* Joke Heat Chart */}
                             <Chart
@@ -63,23 +62,23 @@ const PrintJoke = (props) =>{
                     <div className="voting-container">
                         {/* Like Button */}
                         <button 
-                        className="counter-action increment button" 
-                        onClick={() => props.incrementScore(joke.key, joke.likeCount, joke.userValue)}><i class="far fa-thumbs-up"></i>{joke.likeCount}</button>
+                        className="counter-action increment vote-button" 
+                        onClick={() => props.incrementScore(joke.key, joke.likeCount, joke.userValue)}><i className="far fa-thumbs-up vote-icon"></i>{joke.likeCount}</button>
 
                         {/* Neutral Button */}
                         <button 
-                        className="counter-action neutral button" 
+                        className="counter-action neutral vote-button" 
                         onClick={() => props.neutralScore(joke.key, joke.neutralCount)}>
-                        <i class="far fa-meh"></i>
+                        <i className="far fa-meh vote-icon"></i>
                         {joke.neutralCount}</button>
 
                         {/* Dislike button */}
-                        <button className="counter-action decrement button" 
+                        <button className="counter-action decrement vote-button" 
                         onClick={() => props.decrementScore(joke.key, joke.dislikeCount, joke.userValue)}>
-                        <i class="far fa-thumbs-down"></i> {joke.dislikeCount}</button>
+                        <i className="far fa-thumbs-down vote-icon"></i> {joke.dislikeCount}</button>
 
-                        {/* Hover button */}
-                        <button className=" flip-data-button button ">Hover for data!</button>
+                        {/* Data button */}
+                        <button className=" see-data vote-button ">See data!</button>
                     </div>
 
                 {/* Joke Card ends */}
