@@ -13,11 +13,15 @@ const LandingPage = (props) => {
                         <p>Some background about why we made the page.</p>
 
                         <div className="joke-card top-joke-container">
-                            {/* Joke */}
-                            <p>{joke.userJoke}</p>
+                            <div className="joke-card-header clearfix">
 
-                            {/* Name and Department */}
-                            <h3>{joke.userName}, {joke.userDepartment}</h3>
+                                <div className="joke-card-user">
+                                    <h3>Our current top joke!</h3>
+                                </div>
+                            </div>
+                            <div className="joke-card-joke">
+                                <h3>{joke.userName} from {joke.userDepartment}</h3> <p>{joke.userJoke}</p>
+                            </div>
                         </div>
                     </div>
                 )
