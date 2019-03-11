@@ -120,9 +120,7 @@ height: 0;
                     transition: all 0.28s ease;
                     box-shadow: none;
                     height: 222px;
-
-
-                    
+                    resize: none;
                 }
                 textarea:focus {
                     border-color: $light-accent;

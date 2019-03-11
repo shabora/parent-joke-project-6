@@ -1,0 +1,21 @@
+.daily-joke-container {
+   text-align: center;
+}
+.joke-card {
+   min-height: 120px;
+   border: none;
+   border-radius: 20px;
+   p {
+   text-align: left;
+}
+   
+}
+.get-joke-button {
+   font-size: 10rem;
+   color: $dark-accent;
+   padding: 10px;
+   margin: 0 20px;
+   border: 1px dotted transparent;
+   background: transparent;
+   transition: all 500ms;
+}
