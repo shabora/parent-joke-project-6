@@ -21,7 +21,11 @@ form {
 }
 
 a:focus, a:active, button:focus, button:active {
-    border: 3px solid $dark-accent;
+    border: 1px dotted $dark-accent;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* Wrapper styles */
@@ -38,7 +42,8 @@ html {
 
 body {
     font-family: $body-font;
-    background: linear-gradient(to bottom, rgba(230,224,224, 0.4),rgba(230,224,224, 0.4)), url(./assets/background-image.jpg);
+    // background: linear-gradient(to bottom, rgba(230,224,224, 0.4),rgba(230,224,224, 0.4)), url(./assets/background-image.jpg);
+    background: url(./assets/background.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

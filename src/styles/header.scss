@@ -1,3 +1,102 @@
 header {
-    padding: 50px 0;
+    padding: 20px 0;
+}
+
+// Menu Button Toggle styles
+// Nav not active
+.nav-button-container {
+    text-align: right; 
+    transition: all 1s;
+}
+
+// Nav Showing
+.nav-showing {
+    transform: translateX(-90%);
+}
+
+.nav-button {
+    background: transparent;
+    padding: 20px;
+    border: 1px solid transparent;
+}
+
+
+//Menu styles 
+span.hamburger{
+    border-radius:2px;
+    display:block;
+    margin:3px auto;
+    width:40px;
+}
+span.hamburger.bun{
+  background: $dark-accent;
+  height:7px;
+}
+
+.top:before{
+  content:"";
+  background:$dark-accent;
+  bottom:2px;
+  border-top-left-radius:50%;
+  border-top-right-radius:50%;
+  display:block;
+  height:4px;
+  position:relative;
+  width:40px;
+}
+
+span.hamburger.chez{
+  background: $light-accent;
+  height:3px;
+  margin:4px auto 1px auto;
+}
+
+span.hamburger.meet{
+  background:$darken-dark-accent;
+    height: 5px;
+}
+
+span.hamburger.lettus{
+  background: $light-accent;
+  height:3px;
+  margin:1px auto 4px auto;
+}
+
+// Nav Styles
+// When Nav is inactive
+.nav-links {
+    background: $background;
+	list-style: none;
+	padding: 0;
+	position: fixed;
+	z-index: 2;
+	width: 40%;
+	right: -40%;
+	top: 0;
+	height: 100%;
+    margin: 0;
+    -ms-scroll-translation: all 500ms;
+	transition: all 1s;
+}
+
+// When Nav is active
+.nav-active {
+    right: 0;
+    transition: all 1s;
+}
+
+// Nav Links
+.nav-link {
+    display: block;
+	font-size: 2rem;
+    padding: 60px 5px;
+    text-align: center;
+    font-family: $body-font;
+    font-weight: 900;
+    color: $dark-accent;
+    border: 2px dotted transparent;
+    transition: 500ms;
+    &:hover {
+        color: $darken-light-accent;
+    }
 }

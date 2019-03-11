@@ -1,0 +1,53 @@
+// Print Joke Container styles
+.print-joke-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+// Joke/Data flip animation
+.flip-container {
+    background-color: transparent;
+    width: 100%;
+    height: 400px;
+    border: 1px solid tomato;
+    perspective: 1500px;
+}
+
+.flip-container-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-container:hover .flip-container-inner {
+    transform: rotateY(180deg);
+}
+
+.joke-container, .chart-container {
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    backface-visibility: hidden;
+    background: $white;
+}
+
+.chart-container {
+    transform: rotateY(180deg);
+}
+
+// Centering chart
+.recharts-surface {
+    // margin: 0 auto;
+    background: tomato;
+}
+
+.recharts-responsive-container {
+    margin: 0 auto;
+}
+
+// Joke container scroll
+.joke-container {
+    overflow: scroll;
+}
