@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Header from './components/Header.js'
 import Nav from './components/Nav.js'
@@ -17,8 +16,8 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      jokesList: null,
-      jokeButtonShow: true,
+    /*   jokesList: null,
+      jokeButtonShow: true, */
       jokesFirebaseUse: [],
       userSubmittedJoke: {
         userName: "",
@@ -114,29 +113,9 @@ class App extends Component {
     })
   }
 
-  empty=()=>{
-    this.setState({
-      jokesList: null,
-    })
-  }
+  
 
-  handleDailyJoke = () => {
-    this.empty()
-    axios({
-      url: 'https://icanhazdadjoke.com/',
-      method: 'GET',
-      headers: {
-        Accept: 'application/json'
-      }
-    }).then(results => {
-      const returnedJoke = results.data.joke
-      /*  console.log(returnedJoke) */
-      this.setState({
-        jokesList: returnedJoke,
-        jokeButtonShow: false
-      })
-    })
-  }
+  
 
   // event handling for joke votin
 
@@ -163,9 +142,7 @@ class App extends Component {
           
 
           {/* Daily Joke Page */}
-          <Route path="/dailyjoke" render={()=>{return(<DisplayDailyJoke dailyJoke={this.state.jokesList}
-            handleDailyJoke={this.handleDailyJoke} jokeButtonShow={this.state.jokeButtonShow}
-          />)}} 
+          <Route path="/dailyjoke" render={()=>{return(<DisplayDailyJoke/>)}} 
         
           />
 
