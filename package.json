@@ -28,6 +28,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.7.2",
     "react-router-dom": "^4.3.1"
   }
 }
