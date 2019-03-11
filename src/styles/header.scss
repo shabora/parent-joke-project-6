@@ -12,6 +12,18 @@ header {
 // Nav Showing
 .nav-showing {
     transform: translateX(-90%);
+
+    @include tablet {
+       transform: translateX(-85%);
+    }
+
+    @include mobile {
+       transform: translateX(-80%);
+    }
+
+    @include final {
+       transform: translateX(-75%);
+    }
 }
 
 .nav-button {
@@ -76,7 +88,17 @@ span.hamburger.lettus{
 	height: 100%;
     margin: 0;
     -ms-scroll-translation: all 500ms;
-	transition: all 1s;
+    transition: all 1s;
+    
+    @include tablet {
+       width: 50%;
+       right: -50%;
+    }
+
+    @include mobile {
+       width: 100%;
+       right: -100%;
+    }
 }
 
 // When Nav is active
@@ -89,12 +111,13 @@ span.hamburger.lettus{
 .nav-link {
     display: block;
 	font-size: 2rem;
-    padding: 60px 5px;
+    padding: 75px 5px;
     text-align: center;
     font-family: $body-font;
     font-weight: 900;
     color: $dark-accent;
-    border: 2px dotted transparent;
+    border: 1px dotted transparent;
+    border-bottom: 1px solid $light-accent;
     transition: 500ms;
     &:hover {
         color: $darken-light-accent;

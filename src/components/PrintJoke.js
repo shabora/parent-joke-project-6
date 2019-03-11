@@ -28,7 +28,7 @@ const PrintJoke = (props) =>{
                         {/* Joke Container starts */}
                         <div className="joke-container">
                             {/* Joke */}
-                            <p className="print-joke-para">{joke.userJoke}</p>
+                            <p>{joke.userJoke}</p>
 
                             {/* Name and Department*/}
                             <h3 className="print-joke-name-department">{joke.userName}, {joke.userDepartment}</h3>
@@ -42,9 +42,9 @@ const PrintJoke = (props) =>{
                             <h4 className="view-stats">View the Stats:</h4>
                             {/* Legend */}
                             <p className="legend">
-                            <span className="box purple"></span> = Like
-                            <span className="box blue"></span> = Dislike
-                            <span className="box grey"></span> = Neutral</p>
+                            <span className="box purple"></span> Like
+                            <span className="box blue"></span> Dislike
+                            <span className="box grey"></span> Neutral</p>
 
                             {/* Joke Heat Chart */}
                             <Chart
