@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Nav = (props) => {
     return (
@@ -8,24 +8,23 @@ const Nav = (props) => {
 
             {/* Nav */}
             <div className="nav-button">
-                <button 
-                type="button"
-                onClick={props.handleNavShow}><i className="fas fa-hamburger"
-                ></i></button>
+                <button
+                    type="button"
+                    onClick={props.handleNavShow}><i className="fas fa-hamburger"></i>
+                </button>
             </div>
 
             {/* Nav Links */}
+            {/* if showNav is true, show the following navLinks */}
             {props.showNav === true && (
-            <div className="nav-links">
-                <NavLink to='/'> Home </NavLink>
-                <NavLink to='dailyjoke'> Daily Joke </NavLink>
-                <NavLink to='submitjoke'> submit joke </NavLink>
-                <NavLink to='vote'> Voting </NavLink>
-            
-            </div>
+                <div className="nav-links">
+                    <NavLink to='/'> Home </NavLink>
+                    <NavLink to='dailyjoke'> Daily Joke </NavLink>
+                    <NavLink to='submitjoke'> submit joke </NavLink>
+                    <NavLink to='vote'> Voting </NavLink>
+                </div>
             )}
-
-        {/* Nav Container ends */}
+            {/* Nav Container ends */}
         </div>
     )
 }
