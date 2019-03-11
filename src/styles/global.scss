@@ -11,7 +11,7 @@ ul {
 	padding: 0;
 }
 
-h1, h2, p {
+h1, h2, h3, h4, p {
     margin: 0;
 }
 
@@ -69,12 +69,21 @@ h2 {
     color: $darken-dark-accent;
     letter-spacing: 2px;
     margin-bottom: 20px;
+    font-weight: 900;
 }
 
 h3 {
     font-size: 2.5rem;
     text-transform: uppercase;
     text-align: right;
+    font-weight: 900;
+    padding-top: 30px;
+}
+
+h4 {
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: 700;
 }
 
 p {
