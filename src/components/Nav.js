@@ -19,11 +19,11 @@ const Nav = (props) => {
                 onClick={props.handleNavShow}
                 className="nav-button"
                 >
-                    <span class="hamburger bun top"></span>
-                    <span class="hamburger chez"></span>
-                    <span class="hamburger meet"></span>
-                    <span class="hamburger lettus"></span>
-                    <span class="hamburger bun bottom"></span>
+                    <span className="hamburger bun top"></span>
+                    <span className="hamburger chez"></span>
+                    <span className="hamburger meet"></span>
+                    <span className="hamburger lettus"></span>
+                    <span className="hamburger bun bottom"></span>
                     
                 </button>
             </div>

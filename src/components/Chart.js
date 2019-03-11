@@ -1,7 +1,7 @@
 
 import React from 'react';
 import {
-PieChart, Pie, Legend, Cell, ResponsiveContainer
+PieChart, Pie, Cell, ResponsiveContainer
 } from 'recharts';
 
 const Chart = (props) => {
