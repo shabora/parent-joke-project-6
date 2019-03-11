@@ -23,6 +23,7 @@
     height: 100%;
     transition: transform 0.8s;
     transform-style: preserve-3d;
+    margin-bottom: 40px;
 }
 
 .flip-container:hover .flip-container-inner {
@@ -34,7 +35,7 @@
     width: 100%;
     height: 400px;
     backface-visibility: hidden;
-    background: $white;
+    background: $white;  
 }
 
 .chart-container {
@@ -90,6 +91,7 @@
 // Voting Container styles
 .voting-container {
     text-align: center;
+    margin-top: 40px;
 }
 
 // Hide See Data button
