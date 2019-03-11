@@ -76,9 +76,6 @@ const PrintJoke = (props) =>{
                         <button className="counter-action decrement vote-button" 
                         onClick={() => props.decrementScore(joke.key, joke.dislikeCount, joke.userValue)}>
                         <i className="far fa-thumbs-down vote-icon"></i> {joke.dislikeCount}</button>
-
-                        {/* Data button */}
-                        <button className=" see-data vote-button ">See data!</button>
                     </div>
 
                 {/* Joke Card ends */}

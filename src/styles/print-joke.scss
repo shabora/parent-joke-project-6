@@ -30,6 +30,10 @@
     transform: rotateY(180deg);
 }
 
+.joke-container {
+    padding: 20px;
+}
+
 .joke-container, .chart-container {
     position: absolute;
     width: 100%;
@@ -92,11 +96,6 @@
 .voting-container {
     text-align: center;
     margin-top: 40px;
-}
-
-// Hide See Data button
-.see-data {
-    display: none;
 }
 
 // Vote Button styles
