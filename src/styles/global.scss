@@ -11,7 +11,7 @@ ul {
 	padding: 0;
 }
 
-h1, p {
+h1, h2, p {
     margin: 0;
 }
 
@@ -68,6 +68,7 @@ h2 {
     text-align: center;
     color: $darken-dark-accent;
     letter-spacing: 2px;
+    margin-bottom: 20px;
 }
 
 h3 {

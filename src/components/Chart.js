@@ -46,7 +46,6 @@ const Chart = (props) => {
                             data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
                         }
                     </Pie>
-                    {/* <Legend iconSize={10} width={120} height={140} layout="vertical" verticalAlign="middle" /> */}
                 </PieChart>
             </ResponsiveContainer>
         </React.Fragment>

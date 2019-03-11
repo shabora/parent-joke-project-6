@@ -17,7 +17,7 @@ const PrintJoke = (props) =>{
             <div key={joke.key}className="print-joke-container">
 
                 {/* Joke Card */}
-                <div  index={index} id={joke.key} className="joke-card">
+                <div  index={index} id={joke.key}>
                     
                     {/* Flip Container starts */}
                     <div className="flip-container">

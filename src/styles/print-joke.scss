@@ -1,7 +1,8 @@
 // Print Joke Container styles
 .print-joke-container {
     width: 80%;
-    margin: 0 auto;
+    margin: 40px auto;
+    background: $white;
 
     @include tablet {
        width: 100%;
@@ -14,7 +15,11 @@
     width: 100%;
     height: 400px;
     padding: 10px;
-    perspective: 1500px;
+    // perspective: 1500px;
+
+    @include tablet {
+        height: auto;
+    }
 }
 
 .flip-container-inner {
@@ -24,10 +29,20 @@
     transition: transform 0.8s;
     transform-style: preserve-3d;
     margin-bottom: 40px;
+
+    @include tablet {
+        position: static;
+        transform-style: inherit;
+        margin-bottom: 0;
+    }
 }
 
-.see-data:hover .flip-container-inner {
+.flip-container:hover .flip-container-inner {
     transform: rotateY(180deg);
+
+    @include tablet {
+       transform: none;
+    }
 }
 
 .joke-container {
@@ -40,10 +55,21 @@
     height: 400px;
     backface-visibility: hidden;
     background: $white;  
+
+    @include tablet {
+        position: static;
+        height: auto;
+        backface-visibility: inherit;
+    }
 }
 
 .chart-container {
     transform: rotateY(180deg);
+
+    @include tablet {
+        transform: inherit;
+        padding-bottom: 40px;
+    }
 }
 
 // Centering chart
@@ -99,6 +125,11 @@
     padding: 20px 0;
     text-align: center;
     margin-top: 40px;
+    border-top: 1px solid $light-accent;
+
+    @include tablet {
+        margin-top: 0;
+    }
 }
 
 // Vote Button styles

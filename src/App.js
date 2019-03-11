@@ -105,6 +105,7 @@ class App extends Component {
     dbRef.push(this.state.userSubmittedJoke)
     this.setState({
       userSubmittedJoke: {
+        ...this.state.userSubmittedJoke,
         userName: '',
         userDepartment: '',
         userJoke:'',
