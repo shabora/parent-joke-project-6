@@ -8,7 +8,7 @@ const LandingPage = (props) => {
             props.jokesFirebaseUse.slice(0,1).map((joke=>{
                 return(
                     // Landing Page Container starts
-                    <div className="landing-page-container">
+                    <div className="landing-page-container" key={joke.key}>
 
                         {/* Section instructions */}
                         <h2>Welcome to Parent Joke</h2>

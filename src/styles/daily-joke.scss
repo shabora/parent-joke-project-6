@@ -1,14 +1,16 @@
 .daily-joke-container {
    text-align: center;
 }
+
 .joke-card {
    min-height: 120px;
    border: none;
    border-radius: 5px;
    p {
-   text-align: left;
+      text-align: left;
+   }
 }
-}
+
 .lol {
    opacity: 0;
    color: $dark-accent;
@@ -24,13 +26,14 @@
    border: 1px dotted transparent;
    background: transparent;
    transition: transform 500ms;
+   
    &:hover {
       transform: scale(1.1);
       color: $light-accent;
    }
 }
+
 .get-joke-button:hover + .lol {
    opacity: 1;
    color: $light-accent;
 }
-

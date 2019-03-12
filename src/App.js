@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Header from './components/Header.js'
 import Nav from './components/Nav.js'
@@ -184,20 +184,22 @@ class App extends Component {
 
             {/* Vote on Joke page */}
             <Route path="/vote" render={()=>{return(<PrintJoke incrementScore={this.incrementScore}
-          decrementScore={this.decrementScore}
-          neutralScore={this.neutralScore}
-          jokesFirebaseUse={this.state.jokesFirebaseUse}/>)}}/> 
+            decrementScore={this.decrementScore}
+            neutralScore={this.neutralScore}
+            jokesFirebaseUse={this.state.jokesFirebaseUse}/>)}}/> 
 
-          <Route path="/vote" render={()=>{return(<PrintJoke incrementScore={this.incrementScore}
-        decrementScore={this.decrementScore}
-        neutralScore={this.neutralScore}
-        jokesFirebaseUse={this.state.jokesFirebaseUse}/>)}}/>
+            <Route path="/vote" render={()=>{return(<PrintJoke incrementScore={this.incrementScore}
+            decrementScore={this.decrementScore}
+            neutralScore={this.neutralScore}
+            jokesFirebaseUse={this.state.jokesFirebaseUse}/>)}}/>
           
-        </div>
-          <Footer/> 
-          {/* WRAPPER ENDS */}
-          
+          {/* WRAPPER ENDS */}          
           </div>
+
+          {/* Footer page -- wrapper in component */}
+          <Footer/> 
+        {/* App ends */}
+        </div>
       </Router>
       
     )

@@ -17,7 +17,7 @@ const PrintJoke = (props) =>{
     { props.jokesFirebaseUse.map((joke, index) =>{
         return(
             // Print Joke Container Starts
-            <div key={joke.key}className="print-joke-container">
+            <div key={joke.key} className="print-joke-container">
 
                 {/* Joke Card */}
                 <div  index={index} id={joke.key}>
