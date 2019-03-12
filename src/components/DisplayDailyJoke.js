@@ -14,16 +14,18 @@ class DisplayDailyJoke extends Component {
 
 
   handleDailyJoke = () => {
-    console.log(this, 'this')
+    // Resets the string in type
     if (this.typed) {
       this.typed.reset()
     }
+    // API call to generate joke
     axios({
       url: 'https://icanhazdadjoke.com/',
       method: 'GET',
       headers: {
         Accept: 'application/json'
       }
+      // Set state to returned joke and Joke Button Show = false, so that the icon does not render
     }).then(results => {
       const returnedJoke = results.data.joke
       this.setState({
@@ -34,12 +36,13 @@ class DisplayDailyJoke extends Component {
   }
 
   render() {
-
     return (
       <div className="daily-joke-container">
+        {/* Page instructions */}
         <h2>Get a Joke!</h2>
         <p>Click the icon below to get your daily dose of funny!</p>
 
+        {/* If Joke Button Show is true, show the icon */}
         {this.state.jokeButtonShow === true && (
           <div>
           <button
@@ -50,6 +53,7 @@ class DisplayDailyJoke extends Component {
             </div>
         )}
 
+        {/* If Joke Button Show is false, hide the icon and show the joke */}
         {this.state.jokeButtonShow === false && (
           <div className="daily-joke-container">
           <div className="joke-card">
@@ -65,7 +69,6 @@ class DisplayDailyJoke extends Component {
           </div>
         )}
       </div>
-
     )
   }
 }

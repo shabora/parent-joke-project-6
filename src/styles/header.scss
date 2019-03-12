@@ -1,5 +1,5 @@
 header {
-    padding: 20px 0 0 0;
+    padding: 30px 0 0 0;
 }
 
 // Menu Button Toggle styles
@@ -13,19 +13,36 @@ header {
 .nav-showing {
     transform: translateX(-90%);
 
+    a:focus, a:active, button:focus, button:active {
+        border: 1px solid transparent;
+        border-bottom: 1px solid $dark-accent;
+    }
+
     .top {
         transform-origin: bottom left;
         transform: rotate(-90deg) translateY(-10px);
+
+        @include mobile {
+            transform: none;
+        }
     }
 
     .chez {
         transform-origin: bottom left;
         transform: rotate(-90deg) translateX(7px) translateY(-5px);
+
+        @include mobile {
+            transform: none;
+        }
     }
 
     .meet {
         transform-origin: bottom left;
-        transform: rotate(-90deg) translateX(15px) translateY(1px);
+        transform: rotate(-90deg) translateX(15px) translateY(3px);
+
+        @include mobile {
+            transform: none;
+        }
     }
 
     @include tablet {

@@ -1,10 +1,11 @@
 import React from 'react';
 import Chart from './Chart.js';
 
-
 const PrintJoke = (props) =>{
     return(
         <React.Fragment>
+
+            {/* Page Instructions */}
             <div className="voting-instructions-container">
                 {/* Section instructions */}
                 <h2>Vote on Joke</h2>
@@ -12,6 +13,7 @@ const PrintJoke = (props) =>{
                 <p>Here, you'll see everyone's jokes, ranked in order of <span className="bold">Highest Votes</span> to <span className="bold">Lowest Votes</span>, and view the <span className="bold">Joke Analytics</span>!</p>
             </div>
     
+    {/* Map over the array of objects in Jokes Firebase Use to display each joke individually */}
     { props.jokesFirebaseUse.map((joke, index) =>{
         return(
             // Print Joke Container Starts
@@ -87,8 +89,6 @@ const PrintJoke = (props) =>{
             
             {/* Print Joke Container ends */}
             </div>
-
-
         )
     })}
     </React.Fragment>
