@@ -21,10 +21,7 @@ $desktop-width: 1200px;
 $form-width: 800px;
 $form-final:400px;
 
-
-
 // Global queries
-
 @mixin form-final {
     @media (max-width: #{$form-final}) {
         @content;

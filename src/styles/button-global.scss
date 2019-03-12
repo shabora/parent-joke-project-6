@@ -19,4 +19,8 @@
         border-radius: 40px;
         border: 1px solid $dark-accent;
     }
+
+    @include mobile {
+        font-size: 1rem;
+    }
 }

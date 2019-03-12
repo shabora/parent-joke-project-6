@@ -88,9 +88,7 @@
     }
 }
 
-// ADJUST RECHARTS FOR RESPONSIVE!!!
 .recharts-responsive-container, .recharts-surface, .recharts-wrapper {
-
     @include mobile {
         width: 270px;
     }
@@ -183,4 +181,3 @@
         font-size: 1.5rem;
     }
 }
-

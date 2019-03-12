@@ -1,18 +1,4 @@
 
-.clearfix:after {
-visibility: hidden;
-display: block;
-font-size: 0;
-content: " ";
-clear: both;
-height: 0;
-}
-.clearfix { display: inline-block; }
-/* start commented backslash hack \*/
-* html .clearfix { height: 1%; }
-.clearfix { display: block; }
-/* close commented backslash hack */
-
 .submit-joke-container {
     width: 80%;
     border: 5px solid $dark-accent;
@@ -20,9 +6,6 @@ height: 0;
     background: $light-accent;
     padding: 10px 20px;
     border-radius: 5px;
-
-
-    
 
     .desc {
         width: 100%;
@@ -32,14 +15,15 @@ height: 0;
         padding:10px 20px;
         margin-bottom:20px;
     }
+
     .form{
         width:100%;
-        /* border:1px solid black; */
 
         .input{
             width:calc(50% - 20px);
             margin-right:20px;
             float:left;
+
             .header {
                 padding:10px 20px;
                 border: 5px solid $dark-accent;
@@ -57,13 +41,12 @@ height: 0;
             .form-department, .form-name{
                 position:relative;
 
-                .fas{
+                .fas {
                     position: absolute;
                     top: 20px;
                     left: 17px;
                     
                 }
-    
             }
         
             input {
@@ -89,9 +72,9 @@ height: 0;
             input#name {
                 margin-bottom:6%;
             }
-    
         }
     }
+
         .textfield{
             width: calc(48% - 20px);
             float:right;
@@ -121,11 +104,12 @@ height: 0;
                 resize: none;
                 height: 227px;
             }
+
             textarea:focus {
                 border-color: $light-accent;
-            }
-            
+            }  
         }
+
         .submit {
             width: 100%;
             margin: 0 auto;
@@ -140,13 +124,13 @@ height: 0;
         }
     }
 
-
-    
+//Media queries 
 @include form{
-.submit-joke-container {
-    width: 100%;
-}
-   .form{
+    .submit-joke-container {
+        width: 100%;
+    }
+
+   .form {
        width:100%;
 
     .input {
@@ -155,14 +139,12 @@ height: 0;
         float:none;
 
         @include form-final {
-
             h2 {
                 font-size: 0.8rem !important;
             }
             input, textarea{
                 font-size:0.8rem !important;
             }
-
         }
     }
 
