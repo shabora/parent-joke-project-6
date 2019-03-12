@@ -7,8 +7,9 @@ const PrintJoke = (props) =>{
         <React.Fragment>
             <div className="voting-instructions-container">
                 {/* Section instructions */}
-                <h2>Welcome to Parent Joke</h2>
-                <p>Some background about why we made the page.</p>
+                <h2>Vote on Joke</h2>
+                
+                <p>Here, you'll see everyone's jokes ranked, in order of <span className="bold">Highest Votes</span> to <span className="bold">Lowest Votes</span> and view the <span className="bold">Joke Analytics</span>!</p>
             </div>
     
     { props.jokesFirebaseUse.map((joke, index) =>{

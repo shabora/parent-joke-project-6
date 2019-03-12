@@ -109,3 +109,8 @@ p {
 .bold {
     font-weight: 900;
 }
+
+.underline {
+    font-weight: 700;
+    border-bottom: 2px solid $dark-accent;
+}
