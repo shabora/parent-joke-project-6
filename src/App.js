@@ -57,15 +57,6 @@ class App extends Component {
       })
 
     })
-
-    Swal.fire({
-      title: 'Thank you!',
-      html:
-        'Your joke has been submitted! ' +
-        `Please head over to <a href="#">Vote on Joke</a> ` +
-        'to see it live!',
-      type: 'success',
-    })
   }
 
 
@@ -121,6 +112,15 @@ class App extends Component {
         userJoke:'',
       
       }
+    })
+
+    Swal.fire({
+      title: 'Thank you!',
+      html:
+        'Your joke has been submitted! ' +
+        `Please head over to <a href="vote">Vote on Joke</a> ` +
+        'to see it live!',
+      type: 'success',
     })
   }
 

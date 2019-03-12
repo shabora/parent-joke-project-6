@@ -14,12 +14,19 @@ $white: rgb(248,248,255);
 
 // MEDIA QUERIES
 // Global queries
+$height-adjust: 700px;
 $final-width: 375px;
 $mobile-width: 600px;
 $tablet-width: 900px;
 $desktop-width: 1200px;
 
 // Global queries
+@mixin height-adjust {
+    @media (min-height: #{$height-adjust}) {
+        @content;
+    }
+}
+
 @mixin final {
     @media (max-width: #{$final-width}) {
         @content;
