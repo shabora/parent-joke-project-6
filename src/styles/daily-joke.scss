@@ -8,14 +8,29 @@
    p {
    text-align: left;
 }
-   
+}
+.lol {
+   opacity: 0;
+   color: $dark-accent;
+   font-weight: 700;
 }
 .get-joke-button {
    font-size: 10rem;
    color: $dark-accent;
    padding: 10px;
+   padding-bottom: 0;
    margin: 0 20px;
+   margin-bottom: -10px;
    border: 1px dotted transparent;
    background: transparent;
-   transition: all 500ms;
+   transition: transform 500ms;
+   &:hover {
+      transform: scale(1.1);
+      color: $light-accent;
+   }
 }
+.get-joke-button:hover + .lol {
+   opacity: 1;
+   color: $light-accent;
+}
+
