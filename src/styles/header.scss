@@ -1,5 +1,5 @@
 header {
-    padding: 20px 0;
+    padding: 20px 0 0 0;
 }
 
 // Menu Button Toggle styles
@@ -12,6 +12,17 @@ header {
 // Nav Showing
 .nav-showing {
     transform: translateX(-90%);
+
+    // .top {
+    //     transform-origin: bottom left;
+    //     transform: rotate(-90deg);
+    // }
+
+    // .chez {
+    //     transform-origin: bottom left;
+    //     translate: 
+    //     transform: rotate(-70deg); 
+    // }
 
     @include tablet {
        transform: translateX(-85%);
@@ -27,7 +38,6 @@ header {
     padding: 20px;
     border: 1px solid transparent;
 }
-
 
 //Menu styles
 // Hamburger dimension from https://codepen.io/Brydave/pen/EGIju/
