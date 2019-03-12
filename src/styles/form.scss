@@ -50,7 +50,7 @@ height: 0;
                 }
             }
 
-            .form-department, .form-name,{
+            .form-department, .form-name{
                 position:relative;
 
                 .fas{
@@ -95,7 +95,9 @@ height: 0;
             position: relative;
 
             .fas {
-                top: -207px;
+                position: absolute;
+                top: 18px;
+                left: 15px;
             }
 
             textarea{
