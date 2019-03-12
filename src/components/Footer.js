@@ -2,9 +2,20 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div>
-      <h1>This is the Footer</h1>
-    </div>
+   <footer className="clearfix">
+   <div className="wrapper">
+        <div className="social-media">
+          <a href="#"><i className="fab fa-facebook"></i></a>
+          <a href="#"><i className="fab fa-linkedin"></i></a>
+          <a href="#"><i className="fab fa-twitter-square"></i></a>
+        </div>
+        <div className="copyright">
+          <span>Website made by </span>
+          <span>&copy;</span>
+          <span> 2019 Shabora Global Inc.</span>
+        </div>
+   </div>
+   </footer>
   )
 }
 

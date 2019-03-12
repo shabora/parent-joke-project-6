@@ -1,0 +1,40 @@
+footer {
+    width:100%;
+    background: $dark-accent;
+    margin-top: 3%;
+
+    .social-media{
+        width:calc(100% / 2);
+        border:1px solid white;
+        float:left;
+        height:100%;
+        text-align: center;
+
+        i{
+            width:20%;
+            text-align: center;
+            color: white;
+            margin: 10px 30px;
+            padding:0 20px;
+            border:1px solid green;
+
+            
+        }
+        .fab {
+            font-size:40px;
+        }
+
+    }
+
+
+    .copyright {
+        color: white;
+        text-align: center;
+        word-spacing: 20%;
+        padding: 1% 0;
+        width:calc(100% / 2);
+        border:1px solid white;
+        float:right;
+        margin:10px 0;
+    }
+}

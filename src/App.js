@@ -175,11 +175,12 @@ class App extends Component {
           <Route path="/vote" render={()=>{return(<PrintJoke incrementScore={this.incrementScore}
         decrementScore={this.decrementScore}
         neutralScore={this.neutralScore}
-        jokesFirebaseUse={this.state.jokesFirebaseUse}/>)}}/> 
+        jokesFirebaseUse={this.state.jokesFirebaseUse}/>)}}/>
+          
         </div>
-
+          <Footer/> 
           {/* WRAPPER ENDS */}
-          <Footer/>
+          
           </div>
       </Router>
       
