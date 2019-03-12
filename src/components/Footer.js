@@ -14,6 +14,9 @@ const Footer = () => {
           <span>&copy;</span>
           <span> 2019 Shabora Global Inc.</span>
         </div>
+        <div className="maker">
+          <p>Design by Rafaela, Bojan & Shahyn </p>
+        </div>
    </div>
    </footer>
    
