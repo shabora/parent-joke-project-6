@@ -2,6 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
+
    <footer className="clearfix">
    <div className="wrapper">
         <div className="social-media">

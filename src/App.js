@@ -17,6 +17,7 @@ class App extends Component {
     this.state = {
       jokesFirebaseUse: [],
       showNav: false,
+      showFooter: false,
       userSubmittedJoke: {
         userName: "",
         userDepartment: "",
@@ -50,10 +51,12 @@ class App extends Component {
       // Sort through the new list to return the jokes in order of highest User Value to lowest
       newList.sort((a, b) => parseFloat(b.userValue) - parseFloat(a.userValue));
 
-      // Set the state so that Jokes Firebase Use reflects the sorted data from Firebase
+      // Set the state so that Jokes Firebase Use reflects the sorted data from Firebase and change the state of Show Footer, so that footer renders when the data is in
       this.setState({
         jokesFirebaseUse: newList,
-      })
+      }, this.setState({
+        showFooter: true
+      })) 
     })
   }
 
@@ -191,12 +194,13 @@ class App extends Component {
           {/* WRAPPER ENDS */}          
           </div>
 
-          {/* Footer page -- wrapper in component */}
-          <Footer/> 
+          {/* Footer page -- wrapper in component. Render it when the data from Firebase is in */}
+          {(this.state.showFooter === true) &&
+            <Footer /> 
+          }
         {/* App ends */}
         </div>
-      </Router>
-      
+      </Router>   
     )
   }
 }
