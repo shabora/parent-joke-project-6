@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Header from './components/Header.js'
 import Nav from './components/Nav.js'
