@@ -40,7 +40,7 @@ class DisplayDailyJoke extends Component {
       <div className="daily-joke-container">
         {/* Page instructions */}
         <h2>Get a Joke!</h2>
-        <p>Click the icon below to get your daily dose of funny!</p>
+        <p>Select the button below to get your daily dose of funny!</p>
 
         {/* If Joke Button Show is true, show the icon */}
         {this.state.jokeButtonShow === true && (
@@ -48,7 +48,7 @@ class DisplayDailyJoke extends Component {
           <button
             onClick={this.handleDailyJoke}
             className="get-joke-button">
-            <i class="far fa-laugh-squint"></i></button>
+              <i className="far fa-laugh-squint" aria-required="false"></i></button>
             <p className='lol'>Click me!</p>
             </div>
         )}

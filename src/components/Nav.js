@@ -31,7 +31,7 @@ const Nav = (props) => {
             <div className={navToggle}>
                 {/* Exit menu button */}
                 <button className="exit-button nav-link" onClick={props.handleNavShow}>
-                    <i className="fas fa-times exit"></i>
+                    <i className="fas fa-times exit" aria-required="false"></i>
                 </button>
 
                 <NavLink 
