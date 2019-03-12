@@ -7,9 +7,9 @@ return(
         <div className="desc">
             <p>In the form below, please submit your name, department and joke</p>
         </div>
-            <form className="clearfix" action="submit" onSubmit={props.handleJokeSubmit}>
+            <form action="submit" onSubmit={props.handleJokeSubmit}>
                 <div className="form clearfix">
-                    <div className="input clearfix">
+                    <div className="input">
                         <div className="header">
                             <h2>Submit A Joke!</h2>
                         </div>

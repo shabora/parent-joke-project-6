@@ -18,8 +18,25 @@ $final-width: 375px;
 $mobile-width: 600px;
 $tablet-width: 900px;
 $desktop-width: 1200px;
+$form-width: 800px;
+$form-final:400px;
+
+
 
 // Global queries
+
+@mixin form-final {
+    @media (max-width: #{$form-final}) {
+        @content;
+    }
+}
+
+@mixin form {
+    @media (max-width: #{$form-width}) {
+        @content;
+    }
+}
+
 @mixin height-adjust {
     @media (max-height: #{$height-adjust}) {
         @content;
