@@ -13,16 +13,20 @@ header {
 .nav-showing {
     transform: translateX(-90%);
 
-    // .top {
-    //     transform-origin: bottom left;
-    //     transform: rotate(-90deg);
-    // }
+    .top {
+        transform-origin: bottom left;
+        transform: rotate(-90deg) translateY(-10px);
+    }
 
-    // .chez {
-    //     transform-origin: bottom left;
-    //     translate: 
-    //     transform: rotate(-70deg); 
-    // }
+    .chez {
+        transform-origin: bottom left;
+        transform: rotate(-90deg) translateX(7px) translateY(-5px);
+    }
+
+    .meet {
+        transform-origin: bottom left;
+        transform: rotate(-90deg) translateX(15px) translateY(1px);
+    }
 
     @include tablet {
        transform: translateX(-85%);
@@ -50,6 +54,7 @@ span.hamburger{
 span.hamburger.bun{
   background: $dark-accent;
   height:7px;
+  transition: transform 500ms;
 }
 
 .top:before{
@@ -68,11 +73,13 @@ span.hamburger.chez{
   background: $light-accent;
   height:3px;
   margin:4px auto 1px auto;
+  transition: transform 500ms;
 }
 
 span.hamburger.meet{
   background:$darken-dark-accent;
     height: 5px;
+    transition: transform 500ms;
 }
 
 span.hamburger.lettus{

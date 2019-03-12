@@ -3,7 +3,9 @@
     border-radius: 5px;
     background: $white;
     border:5px solid $dark-accent;
+    box-shadow: 5px 5px 5px 5px $dark-accent;
     padding:10px 20px;
+    
 
     .joke-card-header{
         border:5px solid $light-accent;
