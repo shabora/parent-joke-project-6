@@ -30,10 +30,21 @@
    &:hover {
       transform: scale(1.1);
       color: $light-accent;
+
+      @include mobile {
+         color: $dark-accent;
+         transform: scale(1);
+      }
    }
 }
 
 .get-joke-button:hover + .lol {
    opacity: 1;
    color: $light-accent;
+
+   @include mobile {
+      opacity: 0;
+      color:$dark-accent;
+   }
 }
+
