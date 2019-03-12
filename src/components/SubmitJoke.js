@@ -8,7 +8,7 @@ const SubmitJoke = (props) => {
 
             {/* Joke Submit instructions */}
             <div className="desc">
-                <p>Please submit your joke.</p>
+                <h2 className="joke-form-title">Joke Submission Form</h2>
             </div>
 
                 {/* Form starts */}

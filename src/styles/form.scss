@@ -154,3 +154,12 @@
     }
    }
 }
+
+// Additional font styles
+.joke-form-title {
+    text-transform: uppercase;
+
+    @include mobile {
+        font-size: 1.5rem;
+    }
+}
