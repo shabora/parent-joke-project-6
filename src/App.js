@@ -11,15 +11,10 @@ import LandingPage from './components/LandingPage.js';
 import Footer from './components/Footer';
 import './app.scss';
 
-
-
-
 class App extends Component {
   constructor() {
     super()
     this.state = {
-    /*   jokesList: null,
-      jokeButtonShow: true, */
       jokesFirebaseUse: [],
       showNav: false,
       userSubmittedJoke: {
@@ -32,79 +27,99 @@ class App extends Component {
         dislikeCount:0,
         neutralCount:0,
         key:'',
-      }
-      
+      } 
     }
   }
 
 
 
   componentDidMount(){
+    // Get the jokes stored in Firebase
     const dbRef = firebase.database().ref()
     dbRef.on('value', response => {
       let data = response.val()
  
+      // Set up an empty array to hold what comes back from Firebase (NewList)
       const newList = []  
       for(let key in data){
-        // console.log(data[key])
         data[key].key = key 
     
         newList.push(data[key])
       }
+
+      // Sort through the new list to return the jokes in order of highest User Value to lowest
       newList.sort((a, b) => parseFloat(b.userValue) - parseFloat(a.userValue));
-      // console.log(newList);
+
+      // Set the state so that Jokes Firebase Use reflects the sorted data from Firebase
       this.setState({
         jokesFirebaseUse: newList,
       })
-
     })
   }
 
-
   // Counter Handling
-  incrementScore = (id, like, value) => {
-      const dbRef = firebase.database().ref(id);
-      dbRef.update({
 
+  // When the user hits the 'like' button
+  incrementScore = (id, like, value) => {
+    // target the joke that the user is voting on in Firebase, using id
+      const dbRef = firebase.database().ref(id);
+
+      // Update the likeCount and userValue by 1
+      dbRef.update({
           likeCount: like +1,
           userValue: value +1  
         })  
       }
 
+    // When the user hits the 'dislike' button
     decrementScore = (id, dislike, value) => {
+        // target the joke that the user is voting on in Firebase, using id
         const dbRef = firebase.database().ref(id);
+
+         // Update the dislikeCount by adding 1 and userValue by subtracting 1
         dbRef.update({
           dislikeCount: dislike + 1,
           userValue: value - 1
-        })
-        
+        })    
       }
 
+    // When the user hits the 'neutral' button
     neutralScore = (id, value) => {
+        // target the joke that the user is voting on in Firebase, using id
         const dbRef = firebase.database().ref(id);
+
+        // Update the neutralCount by adding 1
         dbRef.update({
           neutralCount: value + 1
         })
       }
 
-  // EVENT HANDLING
 
+  // EVENT HANDLING
   // Handle change to get text inputs from submit joke
   handleChange = (event) => {
     
+    // Create a new variable called newObject and use it to make a copy of userSubmittedJoke
     const newObject = Object.assign(this.state.userSubmittedJoke)
+
+    // Update newObject when the user updates an input
     newObject[event.target.name] = event.target.value
 
-  
+    // Set the state with the user's inputs
     this.setState({
       userSubmittedJoke:newObject
     }) 
   }
 
   handleJokeSubmit = (event) =>{
+    // Stop the page from refreshing on submit
     event.preventDefault();
+
+    // Update our Firebase database with the joke the user has submitted
     const dbRef = firebase.database().ref()
     dbRef.push(this.state.userSubmittedJoke)
+
+    // Set the state back to empty strings for the three user inputs
     this.setState({
       userSubmittedJoke: {
         ...this.state.userSubmittedJoke,
@@ -115,6 +130,7 @@ class App extends Component {
       }
     })
 
+    // Fire a Sweet Alert thanking the user for submitting a joke
     Swal.fire({
       title: 'Thank you!',
       html:
@@ -125,61 +141,57 @@ class App extends Component {
     })
   }
 
+  // When the hamburger menu or navLinks are clicked, toggle the class of showNav
   handleNavShow = () => {
     this.setState({
       showNav: !this.state.showNav,
     })
   }
 
-  // event handling for joke votin
-
   render() {
     return (
       <Router>
         <div className='App'>
+
           {/* WRAPPER STARTS */}
           <div className="wrapper">
           
-          {/* HEADER STARTS */}
-          <header>
-      
-            <nav>
-              <Nav 
-              showNav={this.state.showNav}
-              handleNavShow={this.handleNavShow}    
-              />
-            </nav>
+            {/* HEADER STARTS */}
+            <header>
+              {/* Nav component */}
+              <nav>
+                <Nav 
+                showNav={this.state.showNav}
+                handleNavShow={this.handleNavShow}    
+                />
+              </nav>
+              
+              {/* Header component */}
+              <Header textLanding='Parent Joke' />
+            {/* HEADER ENDS */}
+            </header>
+
+            {/* Landing Page */}
+            <Route path="/" exact render={() => { return (<LandingPage jokesFirebaseUse={this.state.jokesFirebaseUse}/>)}} />
             
-            <Header textLanding='Parent Joke' />
+            {/* Daily Joke Page */}
+            <Route path="/dailyjoke" render={()=>{return(<DisplayDailyJoke/>)}} />
 
-            
-          {/* HEADER ENDS */}
-          </header>
-         
+            {/* Submit Joke page */}
+            <Route path="/submitjoke" render={()=> {return(<SubmitJoke handleChange={this.handleChange}
+            handleJokeSubmit={this.handleJokeSubmit}
+            userSubmittedJoke={this.state.userSubmittedJoke}/>)}}  />
 
-          {/* LANDING PAGE PLACE HOLDER */}
-          <Route path="/" exact render={() => { return (<LandingPage jokesFirebaseUse={this.state.jokesFirebaseUse}/>)}} />
-          
-          
+            {/* Vote on Joke page */}
+            <Route path="/vote" render={()=>{return(<PrintJoke incrementScore={this.incrementScore}
+          decrementScore={this.decrementScore}
+          neutralScore={this.neutralScore}
+          jokesFirebaseUse={this.state.jokesFirebaseUse}/>)}}/> 
 
-          {/* Daily Joke Page */}
-          <Route path="/dailyjoke" render={()=>{return(<DisplayDailyJoke/>)}} 
-        
-          />
-
-          <Route path="/submitjoke" render={()=> {return(<SubmitJoke handleChange={this.handleChange}
-          handleJokeSubmit={this.handleJokeSubmit}
-          userSubmittedJoke={this.state.userSubmittedJoke}/>)}}  />
-
-
-          <Route path="/vote" render={()=>{return(<PrintJoke incrementScore={this.incrementScore}
-        decrementScore={this.decrementScore}
-        neutralScore={this.neutralScore}
-        jokesFirebaseUse={this.state.jokesFirebaseUse}/>)}}/> 
-        </div>
-
-          {/* WRAPPER ENDS */}
+          {/* Footer page */}
           <Footer/>
+          {/* WRAPPER ENDS */}
+          </div>
           </div>
       </Router>
       

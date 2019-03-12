@@ -1,9 +1,8 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 
-
-
 const Nav = (props) => {
+    // Setting up our two toggle states
     const navToggle = props.showNav ? "nav-links nav-active" : "nav-links";
 
     const hamburgerToggle = props.showNav ? "nav-button-container nav-showing" : "nav-button-container";
@@ -12,7 +11,7 @@ const Nav = (props) => {
         // Nav Container starts
         <div className="nav-container">
 
-            {/* Nav */}
+            {/* Nav Button */}
             <div className={hamburgerToggle}>
                 <button 
                 type="button"
