@@ -18,11 +18,7 @@ header {
     }
 
     @include mobile {
-       transform: translateX(-80%);
-    }
-
-    @include final {
-       transform: translateX(-75%);
+       transform: none;
     }
 }
 
