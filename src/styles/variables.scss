@@ -1,5 +1,4 @@
 // Fonts:
-$accent-font: 'Black Ops One', cursive;
 $body-font: 'Roboto', sans-serif;
 
 // Colors
@@ -22,7 +21,7 @@ $desktop-width: 1200px;
 
 // Global queries
 @mixin height-adjust {
-    @media (min-height: #{$height-adjust}) {
+    @media (max-height: #{$height-adjust}) {
         @content;
     }
 }

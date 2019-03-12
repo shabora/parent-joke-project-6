@@ -153,7 +153,7 @@ class App extends Component {
               />
             </nav>
             
-            <Header textLanding='Shabora Global' />
+            <Header textLanding='Parent Joke' />
 
             
           {/* HEADER ENDS */}

@@ -56,7 +56,6 @@ body {
 // Font Styles
 
 h1 {
-    font-family: $accent-font;
     font-size: 4rem;
     text-align: center;
     text-transform: uppercase;
@@ -99,6 +98,7 @@ h4 {
 
 p {
     font-size: 1.5rem;
+    line-height: 1.6;
 
     @include mobile {
         font-size: 1rem;
