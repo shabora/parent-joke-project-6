@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
+import Swal from 'sweetalert2';
 import Header from './components/Header.js'
 import Nav from './components/Nav.js'
 import firebase from './components/firebase.js'
@@ -55,6 +56,15 @@ class App extends Component {
         jokesFirebaseUse: newList,
       })
 
+    })
+
+    Swal.fire({
+      title: 'Thank you!',
+      html:
+        'Your joke has been submitted! ' +
+        `Please head over to <a href="#">Vote on Joke</a> ` +
+        'to see it live!',
+      type: 'success',
     })
   }
 
