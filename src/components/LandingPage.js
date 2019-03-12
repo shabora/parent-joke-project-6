@@ -12,7 +12,7 @@ const LandingPage = (props) => {
                         <h2>Welcome to Parent Joke</h2>
                         <p className="landing-para">We, the fun committee of <span className="bold">Shabora Global</span>, have been tasked with making the company funnier. We love 'dad jokes', but that term isn't the most inclusive, so we're proud to bring you <span className="bold">Parent Joke</span>! </p>
                         
-                        <p className="landing-para">On this page, you'll find our Top Joke (congrats <span className="underline">{joke.userName}</span> from <span className="underline">{joke.userDepartment}</span>. Feel free to click the menu in the upper right hand corner and take a peak around!</p>
+                        <p className="landing-para">On this page, you'll find our Top Joke (congrats <span className="underline">{joke.userName}</span> from <span className="underline">{joke.userDepartment}</span>). Feel free to click the menu in the upper right hand corner and take a peak around!</p>
 
                         <div className="joke-card top-joke-container">
                             <div className="joke-card-header clearfix">

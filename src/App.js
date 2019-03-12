@@ -119,15 +119,11 @@ class App extends Component {
       title: 'Thank you!',
       html:
         'Your joke has been submitted! ' +
-        `Please head over to <a href="vote">Vote on Joke</a> ` +
+        `Please head over to <a href="vote" className="sweet-alerts-anchor">Vote on Joke</a> ` +
         'to see it live!',
       type: 'success',
     })
   }
-
-  
-
-  
 
   handleNavShow = () => {
     this.setState({
