@@ -8,7 +8,7 @@ const SubmitJoke = (props) => {
 
             {/* Joke Submit instructions */}
             <div className="desc">
-                <p>In the form below, please submit your name, department and joke</p>
+                <p>In the form below, please submit your name, department and joke.</p>
             </div>
 
                 {/* Form starts */}
@@ -30,7 +30,7 @@ const SubmitJoke = (props) => {
                                 onChange={props.handleChange}
                                 value={props.userSubmittedJoke.userName}
                                 />
-                            <i className="fas fa-user" aria-required="false"></i>
+                                <i className="fas fa-user" aria-required="false"></i>
                             </div>
 
                             {/* Department input */}
@@ -41,7 +41,7 @@ const SubmitJoke = (props) => {
                                 onChange={props.handleChange}
                                 value={props.userSubmittedJoke.userDepartment}  
                                 />
-                            <i className="fas fa-map-signs" aria-required="false"></i>
+                                <i className="fas fa-map-signs" aria-required="false"></i>
                             </div>
 
                         {/* Input ends */}
@@ -53,7 +53,7 @@ const SubmitJoke = (props) => {
                             <textarea name="userJoke" id="joke" cols="30" rows="10" resize="none" required placeholder="Tell us your joke!"
                             onChange={props.handleChange}
                             value={props.userSubmittedJoke.userJoke}></textarea>
-                        <i className="fas fa-pencil-alt" aria-required="false"></i>
+                            <i className="fas fa-pencil-alt" aria-required="false"></i>
                         </div>
 
                         {/* Submit button */}
