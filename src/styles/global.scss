@@ -114,3 +114,22 @@ p {
     font-weight: 700;
     border-bottom: 2px solid $dark-accent;
 }
+
+// Sweet Alerts styles 
+.swal2-popup .swal2-styled.swal2-confirm {
+    background: $dark-accent;
+
+    &:hover {
+        background: $darken-dark-accent;
+    }
+}
+
+.swal2-popup .swal2-content {
+    a {
+        font-weight: 900;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

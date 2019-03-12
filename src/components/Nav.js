@@ -30,6 +30,11 @@ const Nav = (props) => {
 
             {/* Nav Links */}
             <div className={navToggle}>
+                {/* Exit menu button */}
+                <button className="exit-button nav-link" onClick={props.handleNavShow}>
+                    <i class="fas fa-times exit"></i>
+                </button>
+
                 <NavLink 
                 to='/' 
                 onClick={props.handleNavShow}

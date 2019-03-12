@@ -29,7 +29,8 @@ header {
 }
 
 
-//Menu styles 
+//Menu styles
+// Hamburger dimension from https://codepen.io/Brydave/pen/EGIju/
 span.hamburger{
     border-radius:2px;
     display:block;
@@ -76,7 +77,7 @@ span.hamburger.lettus{
     background: $background;
 	list-style: none;
 	padding: 0;
-	position: fixed;
+    position: fixed;
 	z-index: 2;
 	width: 40%;
 	right: -40%;
@@ -85,6 +86,10 @@ span.hamburger.lettus{
     margin: 0;
     -ms-scroll-translation: all 500ms;
     transition: all 1s;
+
+    .nav-link {
+        display: none
+    }
     
     @include tablet {
        width: 50%;
@@ -101,20 +106,23 @@ span.hamburger.lettus{
 .nav-active {
     right: 0;
     transition: all 1s;
+
+    .nav-link {
+        display: block;
+    }
 }
 
 // Nav Links
 .nav-link {
-    display: block;
 	font-size: 2rem;
-    padding: 60px 5px;
+    padding: 50px 5px;
     text-align: center;
     font-family: $body-font;
     font-weight: 900;
     color: $dark-accent;
     border: 1px dotted transparent;
     transition: 500ms;
-    
+
     &:hover {
         color: $darken-light-accent;
     }
@@ -124,3 +132,8 @@ span.hamburger.lettus{
        padding: 40px 5px;
     }
 }
+
+.exit-button {
+        background: none;
+        padding: 10px 20px;
+    }

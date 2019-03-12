@@ -33,6 +33,7 @@ height: 0;
         margin-bottom:20px;
     }
     .form{
+        width:100%;
         /* border:1px solid black; */
 
         .input{
@@ -138,3 +139,36 @@ height: 0;
             }
         }
     }
+
+
+    
+@include form{
+.submit-joke-container {
+    width: 100%;
+}
+   .form{
+       width:100%;
+
+    .input {
+        width: 100% !important;
+        margin:0;
+        float:none;
+
+        @include form-final {
+
+            h2 {
+                font-size: 0.8rem !important;
+            }
+            input, textarea{
+                font-size:0.8rem !important;
+            }
+
+        }
+    }
+
+    .textfield {
+        width: 100%;
+        margin-top: 6%;
+    }
+   }
+}
