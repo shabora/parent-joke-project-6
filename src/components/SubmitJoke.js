@@ -1,4 +1,9 @@
 import React from 'react';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMapSigns } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faMapSigns)
 
 const SubmitJoke = (props) => {
 return(
@@ -21,10 +26,13 @@ return(
                         </div>
                         <div className="form-department">
                             <label htmlFor="department" name="department" className="visually-hidden">Department</label>
-                            <input type="text" id="department" name="userDepartment" required placeholder="Department" 
+                            <input
+                            type="text" id="department" name="userDepartment" required placeholder="Department" 
                             onChange={props.handleChange}
                             value={props.userSubmittedJoke.userDepartment}  
                             />
+                            <FontAwesomeIcon className="icon" icon={['fab', 'google']} />
+                            
                         </div>
                     </div>
                     <div className="textfield">
@@ -32,9 +40,9 @@ return(
                         <textarea name="userJoke" id="joke" cols="30" rows="10" resize="none" required placeholder="Tell us your joke!"
                         onChange={props.handleChange}
                         value={props.userSubmittedJoke.userJoke}></textarea>
-                        <div className="submit">
-                            <button type="submit" className="button">Submit</button>
-                        </div>
+                    </div>
+                    <div className="submit">
+                        <button type="submit" className="button">Submit</button>
                     </div>
                 </div>
             </form>

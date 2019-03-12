@@ -30,10 +30,9 @@ height: 0;
         margin-bottom:20px;
     }
     .form{
-        border:1px solid black;
+        /* border:1px solid black; */
 
         .input{
-            border:1px solid red;
             width:calc(50% - 20px);
             margin-right:20px;
             float:left;
@@ -41,7 +40,7 @@ height: 0;
                 padding:10px 20px;
                 border: 5px solid $dark-accent;
                 background:white;
-                margin-bottom:5%;
+                margin-bottom:6%;
 
                 h2{
                     font-size:1.2rem;
@@ -50,10 +49,23 @@ height: 0;
             
                 }
             }
+
+            .form-department{
+                position:relative;
+
+                .icon{
+                    position: absolute;
+                    border:1px solid red;
+                    top: 20px;
+                    left: 17px;
+                    
+                }
+            }
+        
             input {
                 width: 100%;
                 border-radius: 5px;
-                padding: 10px 20px;
+                padding: 10px 44px;;
                 outline: 0;
                 border-width: 5px;
                 border-color: $dark-accent;
@@ -71,41 +83,15 @@ height: 0;
             }
 
             input#name {
-                margin-bottom:5%;
+                margin-bottom:6%;
             }
-            .textfield{
-                width: calc(48% - 20px);
-                float:right;
-                margin-left:20px;
-                textarea{
-                    width:100%;
-                    border-radius: 5px;
-                    padding:10px 20px;
-                    outline: 0;
-                    border-width: 5px;
-                    border-color: $dark-accent;
-                    display: block;
-                    background: white;
-                    font-size: 1rem;
-                    line-height: 1.9;
-                    color: black;
-                    transition: all 0.28s ease;
-                    box-shadow: none;
-                    height: 222px;
-                    resize: none;
-                }
-                textarea:focus {
-                    border-color: $light-accent;
-                }
-            }
+    
         }
-
-        }
+    }
         .textfield{
-            border:1px solid green;
-            width:50%;
+            width: calc(48% - 20px);
             float:right;
-
+            margin-left:20px;
             textarea{
                 width:100%;
                 border-radius: 5px;
@@ -120,7 +106,24 @@ height: 0;
                 color: black;
                 transition: all 0.28s ease;
                 box-shadow: none;
-                height: 222px;
+                resize: none;
+                height: 227px;
+            }
+            textarea:focus {
+                border-color: $light-accent;
+            }
+            
+        }
+        .submit {
+            width: 100%;
+            margin: 0 auto;
+
+            button {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                line-height: 1.9;
+                margin: 3% 0;
             }
         }
     }
