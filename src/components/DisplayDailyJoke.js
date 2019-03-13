@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Typed from 'react-typed';
 import axios from 'axios';
 
 
@@ -15,9 +14,8 @@ class DisplayDailyJoke extends Component {
 
   handleDailyJoke = () => {
     // Resets the string in type
-    if (this.typed) {
-      this.typed.reset()
-    }
+    
+
     // API call to generate joke
     axios({
       url: 'https://icanhazdadjoke.com/',
@@ -57,11 +55,7 @@ class DisplayDailyJoke extends Component {
         {this.state.jokeButtonShow === false && (
           <div className="daily-joke-container">
           <div className="joke-card">
-            <p><Typed
-              strings={[this.state.jokesList]}
-              typeSpeed={50}
-              typedRef={(typed) => { this.typed = typed; }}
-            /></p>
+            <p> {this.state.jokesList}</p>
             </div>
             <button
               onClick={this.handleDailyJoke}
