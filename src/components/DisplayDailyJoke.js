@@ -65,15 +65,3 @@ class DisplayDailyJoke extends Component {
 }
 
 export default DisplayDailyJoke
-
-
-
-
-
-
-
-
-
-
-
-
