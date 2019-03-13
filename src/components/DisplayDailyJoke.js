@@ -13,9 +13,6 @@ class DisplayDailyJoke extends Component {
 
 
   handleDailyJoke = () => {
-    // Resets the string in type
-    
-
     // API call to generate joke
     axios({
       url: 'https://icanhazdadjoke.com/',
